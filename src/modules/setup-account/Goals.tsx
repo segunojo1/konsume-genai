@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import GoalCheckbox from './GoalCheckbox';
-import line from '../../public/assets/line.png';
+import line from '../../../public/assets/line.png';
 import Image from 'next/image';
 import { useSetupContext } from '../../context/SetupContext';
 import { toast } from 'react-toastify';
-import { dashboardhero } from '../dashboard/dashboardhero';
-import MultiStepProgressBar from '../MultiStepProgressBar';
+import { dashboardhero } from '@/lib/dashboardhero';
 
 const Goals = () => {
   const { nextPage, previousPage, userGoal, currentPage } = useSetupContext();

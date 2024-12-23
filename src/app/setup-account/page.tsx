@@ -1,20 +1,18 @@
-import Steps from "@/modules/setup-account/Steps";
-import Welcome from "@/modules/setup-account/Welcome";
-import React, { useContext, useEffect, useState } from "react";
+"use client"
+
+import React, { useEffect, useState } from "react";
 import Form from "@/modules/setup-account/Form";
 import { useSetupContext } from "../../context/SetupContext";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { axiosKonsumeInstance } from "../../http/konsume";
 import Cookies from "js-cookie";
 import { toast } from "react-toastify";
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import MainLayoutContext from "@/context/LayoutContext";
 import ProgressBar from "@/modules/ProgressBar";
 import MultiStepProgressBar from "@/modules/MultiStepProgressBar";
 import withHigherAuth from "@/app/helpers/withHigherAuth";
-import BlogContext from "@/context/BlogContext";
 import { useUserContext } from "@/context/UserContext";
 import CreateProfileLoader from "@/components/animated-visual-cues/CreateProfileLoader";
 

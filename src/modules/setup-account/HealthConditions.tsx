@@ -1,13 +1,13 @@
 import React from 'react';
 import HealthCheckboxes from './HealthCheckboxes';
 import Image from 'next/image';
-import line from '../../public/assets/line.png';
+import line from '../../../public/assets/line.png';
 import { useSetupContext } from '../../context/SetupContext';
 import { toast } from 'react-toastify';
-import MultiStepProgressBar from '../MultiStepProgressBar';
+
 
 const HealthConditions = () => {
-  const { previousPage, nextPage, possibleDiseases, currentPage } = useSetupContext();
+  const { previousPage, nextPage, possibleDiseases } = useSetupContext();
 
   const checkForm = () => {
     if (possibleDiseases.length >= 1) {

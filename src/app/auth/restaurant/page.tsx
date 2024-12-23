@@ -1,5 +1,4 @@
 import { SignupForm } from '@/modules/auth/signup/restaurant/SignupForm'
-import React from 'react'
 
 const Restaurant = () => {
   return (

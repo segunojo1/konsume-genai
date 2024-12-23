@@ -1,10 +1,9 @@
 import React, { useContext } from "react";
 import Image from "next/image";
-import line from "../../public/assets/line.png";
+import line from "../../../public/assets/line.png";
 import { useSetupContext } from "../../context/SetupContext";
-import { diettype } from "../dashboard/diettype";
 import DietCheckbox from "./DietCheckbox";
-import MultiStepProgressBar from "../MultiStepProgressBar";
+import { diettype } from "@/lib/deittype";
 
 const DietType = () => {
   const { previousPage, currentPage } = useSetupContext();

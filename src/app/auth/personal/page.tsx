@@ -1,6 +1,6 @@
+"use client"
 import withoutAuth from '@/app/helpers/withoutAuth';
 import { SignupForm } from '@/modules/auth/signup/SignupForm';
-import React from 'react';
 
 const Signup = () => {
   return (

@@ -2,7 +2,7 @@
 import axios from 'axios';
 import React, { useEffect } from 'react';
 import Cookies from 'js-cookie';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import isAuthenticated from './isAuthenticated';
 import { axiosKonsumeInstance } from '@/http/konsume';
 

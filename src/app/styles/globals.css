@@ -65,14 +65,14 @@ html {
   scroll-behavior: smooth;
 }
 
-@layer base {
+/* @layer base {
   * {
     @apply border-border;
   }
   body {
     @apply bg-background text-foreground;
   }
-}
+} */
 
 input[type="number"]::-webkit-inner-spin-button {
   display: none;
