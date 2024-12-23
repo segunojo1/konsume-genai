@@ -24,7 +24,7 @@ import {
 import { Button } from "@/components/ui/button";
 import MultiStepProgressBar from "../MultiStepProgressBar";
 import axios from "axios";
-import { allCountries } from "@/helpers/countries";
+import { allCountries } from "@/app/helpers/countries";
 
 const formSchema = z.object({
   age: z.string().min(1, { message: "Dob is required" }),

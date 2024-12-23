@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useRouter } from "next/router";
+import React, { useEffect } from "react";
+import { useRouter } from 'next/navigation'
 import isAuthenticated from "./isAuthenticated";
 import Cookies from "js-cookie";
 

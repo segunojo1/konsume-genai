@@ -1,3 +1,4 @@
+'use client'
 import React, { createContext, useEffect, useState } from 'react';
 import { MainLayoutContextProps } from '../@types';
 import Cookies from 'js-cookie';

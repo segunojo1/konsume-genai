@@ -1,10 +1,8 @@
+'use client'
 import React, { createContext, useEffect, useRef, useState } from "react";
-import { MainLayoutContextProps } from "../@types";
-import Cookies from "js-cookie";
 import { axiosKonsumeInstance } from "@/http/konsume";
-import { retry } from "@/helpers/retryapi";
-import useIsClient from "@/hooks/useIsClient";
-import { useRouter } from "next/router";
+import { retry } from "@/app/helpers/retryapi";
+import { usePathname, useRouter } from "next/navigation";
 import { useUserContext } from "./UserContext";
 
 const MealsContext = createContext({} as any);
@@ -23,6 +21,7 @@ export function MealsContextProvider({
 
   const dataFetchedRef = useRef(false);
   const router = useRouter(); // Get the current route
+  const pathname = usePathname()
   const { getProfileID } = useUserContext();
 
   useEffect(() => {
@@ -87,10 +86,10 @@ export function MealsContextProvider({
       setMidnightTimer(fetchMeals);
     };
 
-    if (router.pathname === "/dashboard" || router.pathname === "/meals") {
+    if (pathname === "/dashboard" || pathname === "/meals") {
       checkAndFetchMeals();
     }
-  }, [router.pathname]);
+  }, [pathname]);
 
   // Set a timer to fetch new data at the next 12:00 AM
   const setMidnightTimer = (fetchMeals: any) => {

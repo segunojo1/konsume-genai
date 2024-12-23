@@ -1,10 +1,8 @@
+'use client'
 import React, { createContext, useEffect, useRef, useState } from 'react';
-import { MainLayoutContextProps } from '../@types';
 import { toast } from 'react-toastify';
-import gemini from '@/http/gemini';
 import { useSetupContext } from './SetupContext';
 import { axiosKonsumeInstance } from '@/http/konsume';
-import Cookies from 'js-cookie';
 
 const ChatBotContext = createContext({} as any);
 export default ChatBotContext;
@@ -15,7 +13,6 @@ export function ChatBotContextProvider({ children }: { children: React.ReactNode
   const [isContentReplaced, setIsContentReplaced] = useState(false);
   const [loading, setIsLoading] = useState(false);
   const containerRef:any = useRef(null);
-  const { userGoal, possibleDiseases } = useSetupContext();
 
   
   /*

@@ -1,12 +1,12 @@
-import React, { ChangeEvent, createContext, useEffect, useState } from 'react';
+'use client'
+import { ChangeEvent, createContext, useEffect, useState } from 'react';
 import { MainLayoutContextProps } from '../@types';
 import Cookies from 'js-cookie';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import { StaticImport } from 'next/dist/shared/lib/get-img-props';
-import { useSetupContext } from './SetupContext';
 import { toast } from 'react-toastify';
 import { useUserContext } from './UserContext';
-import { useRouter } from 'next/router';
+import { usePathname, useRouter } from 'next/navigation';
 
 const ScannerContext = createContext<MainLayoutContextProps>({} as any);
 export default ScannerContext;
@@ -16,7 +16,7 @@ export function ScannerContextProvider({ children }: { children: React.ReactNode
     if (!API_KEY) {
       throw new Error("NEXT_PUBLIC_GEMINI_KEY is not defined");
     }
-    const router = useRouter();
+    const pathname = usePathname()
     const genAI = new GoogleGenerativeAI(API_KEY);
     
     const [loading, setLoading] = useState<boolean>(false);
@@ -24,7 +24,7 @@ export function ScannerContextProvider({ children }: { children: React.ReactNode
     const [bitImage, setBitImage] = useState("");
     const [result, setResult] = useState("");
     const [showScanner, setShowScanner] = useState(true);
-    const { nationality, userGoals, allergies, DOB, weight, gender, dietType} = useUserContext();
+    const { userGoals, allergies} = useUserContext();
 
     const [queryText, setQueryText] = useState(
       `Whats in this image? Is it a food? What is in this food? with my information like my goal of ${userGoals}, health conditions  ${allergies} if this is not a food say this is not an image of a food`
@@ -33,7 +33,7 @@ export function ScannerContextProvider({ children }: { children: React.ReactNode
   useEffect(() => {
     console.log(userGoals);
     setQueryText(`Whats in this image? Is it a food? What is in this food? with my information like my goal of ${userGoals}, health conditions  ${allergies} if this is not a food say this is not an image of a food`)
-  }, [router.pathname])
+  }, [pathname])
   
     const handleImageChange = (
       event: ChangeEvent<HTMLInputElement> | any

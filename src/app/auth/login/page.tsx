@@ -3,7 +3,7 @@
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import { toast } from 'react-toastify';
 import { axiosKonsumeInstance } from '@/http/konsume';
 import Header from '@/modules/auth/login/Header';
@@ -12,7 +12,7 @@ import SocialLogin from '@/modules/auth/login/SocialLogin';
 import Cookies from 'js-cookie';
 import { z } from 'zod';
 import { useUserContext } from '@/context/UserContext';
-import withoutAuth from '@/helpers/withoutAuth';
+import withoutAuth from '@/app/helpers/withoutAuth';
 import SignUpLink from '@/modules/auth/login/SignUpLink';
 
 

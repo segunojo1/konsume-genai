@@ -13,7 +13,7 @@ import { Button } from "@/components/ui/button";
 import MainLayoutContext from "@/context/LayoutContext";
 import ProgressBar from "@/modules/ProgressBar";
 import MultiStepProgressBar from "@/modules/MultiStepProgressBar";
-import withHigherAuth from "@/helpers/withHigherAuth";
+import withHigherAuth from "@/app/helpers/withHigherAuth";
 import BlogContext from "@/context/BlogContext";
 import { useUserContext } from "@/context/UserContext";
 import CreateProfileLoader from "@/components/animated-visual-cues/CreateProfileLoader";

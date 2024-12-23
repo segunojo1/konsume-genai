@@ -1,14 +1,15 @@
-import React from 'react';
-import { useRouter } from 'next/router';
+"use client"
+
+import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
-import { personalAccountFeatures } from '@/helpers/personalAccountFeatures';
-import { restaurantAccountFeatures } from '@/helpers/restaurantAccountFeatures';
+import { personalAccountFeatures } from '@/app/helpers/personalAccountFeatures';
+import { restaurantAccountFeatures } from '@/app/helpers/restaurantAccountFeatures';
 import Link from 'next/link';
-import withoutAuth from '@/helpers/withoutAuth';
+import withoutAuth from '@/app/helpers/withoutAuth';
 import ChooseAccount from '@/modules/auth/ChooseAccount';
 
-const Signup: React.FC = () => {
+const Signup = () => {
   const router = useRouter();
 
   return (

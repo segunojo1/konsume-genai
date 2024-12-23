@@ -1,11 +1,10 @@
-import React, { createContext, useEffect, useRef, useState } from 'react';
-import { MainLayoutContextProps } from '../@types';
-import Cookies from 'js-cookie';
+'use client'
+import { createContext, useEffect, useRef, useState } from 'react';
 import { axiosKonsumeInstance } from '@/http/konsume';
-import { retry } from '@/helpers/retryapi';
+import { retry } from '@/app/helpers/retryapi';
 import { toast } from 'react-toastify';
 import { useUserContext } from './UserContext';
-import { useRouter } from 'next/router';
+import { usePathname, useRouter } from 'next/navigation';
 
 const BlogContext = createContext({} as any);
 export default BlogContext;
@@ -24,7 +23,7 @@ export function BlogContextProvider({ children }: { children: React.ReactNode })
     const [loadingBlog, setLoadingBlog] = useState(false)
     const {getProfileID} = useUserContext();
     const router = useRouter();
-
+    const pathname = usePathname()
     const dataFetchedRef = useRef(false);
 
     useEffect(() => {
@@ -77,10 +76,14 @@ export function BlogContextProvider({ children }: { children: React.ReactNode })
             }
 
         };
-        if (router.pathname === "/dashboard" || router.pathname === "/" || router.pathname === "/auth/login") {
+        if (
+            pathname === "/dashboard" ||
+            pathname === "/" ||
+            pathname === "/auth/login"
+          ) {
             checkAndFetchBlogs();
-        }
-    }, [router.pathname]);
+          }
+    }, [pathname]);
 
     useEffect(() => {
         const getBookmarks = async () => {
@@ -111,7 +114,7 @@ export function BlogContextProvider({ children }: { children: React.ReactNode })
             }
         }
         getBookmarks()
-    }, [router.pathname])
+    }, [pathname])
 
     const contextValue: any = {
         activePage,

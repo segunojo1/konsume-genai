@@ -1,4 +1,4 @@
-import withoutAuth from '@/helpers/withoutAuth';
+import withoutAuth from '@/app/helpers/withoutAuth';
 import { SignupForm } from '@/modules/auth/signup/SignupForm';
 import React from 'react';
 

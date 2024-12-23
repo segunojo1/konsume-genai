@@ -1,8 +1,7 @@
+'use client'
 import React, { createContext, useEffect, useRef, useState } from 'react';
-import { MainLayoutContextProps } from '../@types';
 import Cookies from 'js-cookie';
 import { useSetupContext } from './SetupContext';
-import { retry } from '@/helpers/retryapi';
 import gemini from '@/http/gemini';
 
 const DashboardContext = createContext({} as any);

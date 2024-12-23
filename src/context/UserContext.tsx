@@ -1,9 +1,10 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+'use client'
+import { createContext, useContext, useEffect, useState } from "react";
 
 import Cookies from "js-cookie";
 import { axiosKonsumeInstance } from "@/http/konsume";
-import { useRouter } from "next/router";
-import { formatDateToDDMMYY } from "@/helpers/formatDateToDDMMYY";
+import { useRouter, usePathname } from "next/navigation";
+import { formatDateToDDMMYY } from "@/app/helpers/formatDateToDDMMYY";
 
 interface UserContextProps {
   username: string;
@@ -44,7 +45,7 @@ export const UserProvider: React.FC<any> = ({ children }) => {
   const [updating, setUpdating] = useState<boolean>(false);
   const [streakCount, setStreakCount] = useState(0);
   const [profileID, setProfileID] = useState<number | undefined>();
-  const router = useRouter();
+  const pathname = usePathname();
   const getUserDetails = async () => {
     try {
       const { data } = await axiosKonsumeInstance.get(
@@ -142,10 +143,12 @@ export const UserProvider: React.FC<any> = ({ children }) => {
   }
 
   useEffect(() => {
-    if (router.pathname !== "/auth/login" ) {
-      Promise.all([getUserDetails(), getProfileID()]).then(() => Promise.all([getProfileDetails(), getStreakCount()]))
+    if (pathname !== "/auth/login") {
+      Promise.all([getUserDetails(), getProfileID()]).then(() =>
+        Promise.all([getProfileDetails(), getStreakCount()])
+      );
     }
-  }, [router.pathname]);
+  }, [pathname]);
   
   return (
     <UserContext.Provider
