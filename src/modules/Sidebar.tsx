@@ -1,19 +1,16 @@
 import React, { useEffect } from "react";
 import SidebarItem from "./SidebarItem";
-import home from "../public/home.svg";
-import logo from "../public/konsume_logo.svg";
-import progress from "../public/assets/progress.svg";
-import scanner from "../public/scan.svg";
-import chat from "../public/chat.svg";
-import profile from "../public/profile.svg";
-import settings from "../public/settings.svg";
-import logout from "../public/logout.svg";
-import Calendar from "../public/calendar.svg";
-import blogs from "../public/book-02.svg"
-import meals from "../public/recommendedmeals.svg"
+import home from "../../public/home.svg";
+import logo from "../../public/konsume_logo.svg";
+import scanner from "../../public/scan.svg";
+import chat from "../../public/chat.svg";
+import profile from "../../public/profile.svg";
+import logout from "../../public/logout.svg";
+import Calendar from "../../public/calendar.svg";
+import blogs from "../../public/book-02.svg"
+import meals from "../../public/recommendedmeals.svg"
 import Image from "next/image";
 import { DashboardNavProps } from "../@types";
-import { Steps, Hints } from 'intro.js-react';
 
 const Sidebar: React.FC<DashboardNavProps> = ({ toggled }) => {
   

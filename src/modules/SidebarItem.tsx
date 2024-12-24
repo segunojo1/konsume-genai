@@ -3,8 +3,7 @@ import Link from "next/link";
 import React, { useContext } from "react";
 import { SidebarProps } from "../@types";
 import Cookies from "js-cookie";
-import MealsContext from "@/context/MealsContext";
-import { useRouter } from "next/router";
+import { usePathname } from "next/navigation";
 import MainLayoutContext from "@/context/LayoutContext";
 import {
   Tooltip,
@@ -16,7 +15,7 @@ import {
 const SidebarItem: React.FC<SidebarProps> = ({ icon, text, href }) => {
   const { toggled, setToggled } = useContext(MainLayoutContext);
 
-  const router = useRouter();
+  const pathname = usePathname();
   const handleClick = () => {
     setToggled(false);
     if (href == "auth/login") {
@@ -26,7 +25,7 @@ const SidebarItem: React.FC<SidebarProps> = ({ icon, text, href }) => {
       Cookies.remove("visited");
     }
   };
-  const isActive = router.pathname === `/${href}`;
+  const isActive = pathname === `/${href}`;
   return (
     <TooltipProvider>
       <Tooltip>
