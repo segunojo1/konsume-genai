@@ -95,7 +95,6 @@ export default {
   		},
   		fontFamily: {
   			playfair: 'Playfair Display',
-  			satoshi: 'Satoshi',
   			worksans: 'Work Sans',
   			jakarta: 'Plus Jakarta Sans'
   		},
@@ -213,14 +212,6 @@ export default {
   				},
   				'20%,50%': {
   					opacity: '0'
-  				}
-  			},
-  			'accordion-down': {
-  				from: {
-  					height: '0'
-  				},
-  				to: {
-  					height: 'var(--radix-accordion-content-height)'
   				}
   			},
   			'accordion-down': {

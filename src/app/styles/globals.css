@@ -719,3 +719,13 @@ body {
   height: 100%;
   background-color: #0c2503;
 }
+.hero{
+  background-image: url('/herobg.svg');
+}
+.servup::after{
+  content: '';
+  display: block;
+  width: 100%;
+  height: 7px;
+  background-color: #FFC400;
+}

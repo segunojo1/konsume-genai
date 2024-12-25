@@ -1,13 +1,12 @@
 import Image from "next/image";
-import card4 from "../../public/meals-card.svg";
-import card5 from "../../public/nutrition-card.svg";
-import card6 from "../../public/streak-card.svg";
+import card4 from "../../../public/meals-card.svg";
+import card5 from "../../../public/nutrition-card.svg";
+import card6 from "../../../public/streak-card.svg";
 import Link from "next/link";
-import { Button } from "@/components/ui/button";
 
 const SectionTwo = () => {
   return (
-    <div id="magic" className="bg-primary-bg flex flex-col items-center ">
+    <div id="magic" className=" flex flex-col items-center ">
       <div className=" flex flex-col gap-[8px] items-center justify-center pt-[141px] mb-[56px]">
         <h1 className="text-[42px]/[51px] font-bold">The Magic</h1>
         <p className="font-medium text-[22px]/[27px]">

@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import pan from "../../../public/hero_pan.svg";
+import pan from "../../../public/pan.svg";
 import pann from "../../../public/pann.svg";
 import plate from "../../../public/konsumeplate.svg";
 import Hero from "./Hero";
@@ -8,15 +8,17 @@ import SectionFour from "./SectionFour";
 import Link from "next/link";
 import FAQs from "./FAQs";
 import Footer from "./Footer";
+import SectionOne from "./SectionOne";
+import SectionTwo from "./SectionTwo";
 
 const HomeBody = () => {
   return (
-    <main className="flex pt-[200px] flex-col font-satoshi">
+    <main className="flex  flex-col font-satoshi">
       <Hero />
-      {/* <SectionOne />
+      <SectionOne />
       <SectionTwo />
-      <SectionThree /> */}
-      <div className="flex pt-[98.06px] flex-col items-center bg-primary-bg">
+      {/* <SectionThree /> */}
+      <div className="flex pt-[98.06px] flex-col items-center ">
         <h1 className="text-[42.88px]/[51.46px] font-bold">
           Konsume in Action!
         </h1>
@@ -42,7 +44,7 @@ const HomeBody = () => {
       <Image
         src={pan}
         alt="easier"
-        className="absolute hidden md:block -top-7 right-0 z-0 "
+        className="absolute hidden md:block top-[45%] right-0 z-0 "
         width={858}
         height={869}
       />

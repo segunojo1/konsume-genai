@@ -3,31 +3,23 @@ import Image from "next/image"
 import easier from "../../../public/easier2.png";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
+import pan from "../../../public/pan.svg";
+import pann from "../../../public/pann.svg";
 
 const Hero = () => {
   return (
-    <div className="md:max-w-[800px] max-w-[349px] flex flex-col gap-[67px] md:self-start self-center mx-auto md:mx-0 z-50 2xl:px-[90px] px-[30px] ">
-        <Reveal>
-        <h1 className="text-[54px]/[65px] md:text-[118px]/[120%] z-50  font-bold tracking-[-7px] flex flex-col md:items-start justify-center items-center md:justify-start relative ">
-          
-          Eating Healthy has never been
-          <Image
-            src={easier}
-            alt="easier"
-            className="relative bottom-0 md:[337px] w-[177px] md:-left-4 "
-            width={337}
-            height={90}
-          />
+    <div className="md:min-w-full font-satoshi min-h-[120vh] bg-cover bg-no-repeat bg-center relative bg-[url('/herobg.svg')] hero max-w-[349px] flex flex-col gap-[54px] items-center mx-auto md:mx-0 z-50 2xl:px-[90px] px-[30px] ">
+        
+        <h1 className="text-[54px]/[65px] font-satoshi mx-auto text-white pt-[150px] md:text-[132px]/[113px] z-50 max-w-[1047px] text-center font-bold  tracking-[-5px] flex flex-col md:items-start justify-center items-center md:justify-start relative ">
+              Eating Healthy has never been <br />Easier 
         </h1>
-        </Reveal>
-        <div className="cursor-pointer flex gap-[17px] ">
-          <Link href="/auth/login" className="text-[19px] font-bold rounded-[40px] text-primarygtext bg-primary-bg hover:text-primary-bg hover:bg-primarygtext px-[25px] py-[10px]">
-            Log in
+        <p className="text-[20px]/[27px] text-white relative z-[50] max-w-[656px] font-normal mx-auto">Discover smarter meal planning with personalized recommendations, seamless restaurant options, and tools to make healthy living effortless.</p>
+        <Link href="/auth/signup">
+            <button className="cursor-pointer text-[16px]/[120%] font-normal bg-[#9C8BF9] text-primary-bg w-[140px] py-[16px] px-[20px] rounded-[49px]">
+              Join Konsume
+            </button>
           </Link>
-          <Link href="/auth/signup" className="z-[1000] text-[19px] font-bold rounded-[40px] bg-primarygtext text-primary-bg hover:text-primarygtext hover:bg-primary-bg px-[25px] py-[10px]">
-            Join Us
-          </Link>
-        </div>
+          
       </div>
   )
 }

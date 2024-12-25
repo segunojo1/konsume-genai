@@ -1,97 +1,49 @@
-import Image from "next/image"
-import line from "../../public/rough-line.svg";
-import line2 from "../../public/rough-line2.svg";
-import card1 from "../../public/timetable-meal-info.svg";
-import card2 from "../../public/dashboardmobile.svg";
-import card3 from "../../public/timetable-meal-info.svg";
-import pan2 from "../../public/pan2.svg";
-import Link from "next/link"
-import Marquee from "@/components/ui/marquee";
+import Image from "next/image";
+import { mealCards } from "./cards";
 
 const SectionOne = () => {
   return (
-    <div className="  min-w-full">
-        <div className="flex flex-col absolute left-0  min-w-full ">
-          <Image
-            src={line2}
-            alt="line"
-            className=" absolute min-w-full -top-6 min-h-[42px]"
-          />
-          <Image
-            src={line}
-            alt="line"
-            className=" absolute min-w-full min-h-[42px]"
-          />
+    <section className="font-satoshi text-[90px]/[120%] mt-56 font-bold lg:px-[90px] ">
+        <h2 className="max-w-fit h-fit max-h-[228px] mb-[101px] ">
+          <span className="servup h-fit flex flex-col">Serve Up Your </span>
+          <span className="servup">Healthy Journey</span>
+        </h2>
+
+        <div className="flex p-12">
+          {
+            mealCards.map(card => <FeatureCard {...card} /> )
+          }
+          
         </div>
-        <div className="bg-primary-bg mt-24  pt-28 flex flex-col gap-[7px] items-center justify-center">
-          <h1 className="max-w-[326px] text-[42px]/[51px] font-bold">
-            Serve Up Your Healthy Journey
-          </h1>
-          <Image
-            src={pan2}
-            alt="easier"
-            className="animate-spin "
-            width={168}
-            height={168}
-          />
-          <Marquee className="md:hidden hidden">
-          <div className="flex overflow-scroll md:overflow-hidden gap-[68px] h-[660px]">
-            <Image
-              src={card1}
-              alt="card"
-              className="h-[606px] "
-              width={308}
-              height={606}
-            />
-            <div className="md:relative w-[308px] h-[660px]">
-              <Image
-                src={card2}
-                alt="card"
-                className=" md:absolute bottom-0 w-[308px] h-[606px] "
-                width={308}
-                height={606}
-              />
-            </div>
-            <Image
-              src={card3}
-              alt="card"
-              className=" h-[606px] "
-              width={308}
-              height={606}
-            />
-          </div>
-          </Marquee>
-          <div className="md:flex hidden gap-[68px] h-[660px]">
-            <Image
-              src={card1}
-              alt="card"
-              className="h-[606px] "
-              width={308}
-              height={606}
-            />
-            <div className="md:relative w-[308px] h-[660px]">
-              <Image
-                src={card2}
-                alt="card"
-                className=" md:absolute bottom-0 w-[308px] h-[606px] "
-                width={308}
-                height={606}
-              />
-            </div>
-            <Image
-              src={card3}
-              alt="card"
-              className=" h-[606px] "
-              width={308}
-              height={606}
-            />
-          </div>
-          <Link href="/auth/signup" className="mt-[85px] text-[19px] font-bold rounded-[40px] bg-primarygtext text-primary-bg px-[25px] py-[10px]">
-            Join Us
-          </Link>
-        </div>
-      </div>
+      </section>
   )
 }
 
 export default SectionOne
+type colors = {
+  bgcolor: string;
+  textcolor: string;
+}
+type FeatureCardProps = {
+  rotate: number;
+  cardimg: string;
+  cardsticker: string;
+  cardtitle: string;
+  carddesc: string;
+  colors: colors;
+}
+const FeatureCard = ({rotate, cardimg, cardsticker, cardtitle, carddesc, colors} : FeatureCardProps) => {
+  return (
+    <figure className={`p-6 bg-secondary-300 w-fit max-w-[290px] space-y-5 rounded-[21px] rotate-[${rotate}deg]`} style={{ transform: `rotate(${rotate}deg)`, backgroundColor: `${colors.bgcolor}`, color: colors.textcolor }}>
+      <div className="relative">
+      <Image src={cardimg} width={206} height={199} alt="Feature card" className=" mx-auto"/>
+      <Image src={cardsticker} width={57} height={57} alt="konsume sticker" className="absolute -top-3 right-0 rotate-6" />
+      </div>
+      <figcaption className="space-y-[11px] relative ">
+      <Image src="/vector1.svg" width={220} height={205} alt="Feature card" className="absolute z-0 left-0 right-0" />
+        <h3 className="text-[21px]/[120%] font-bold relative z-40">{cardtitle}</h3>
+        <p className="text-[14px]/[120%] font-medium relative z-40">{carddesc}</p>
+      </figcaption>
+    </figure>
+  );
+}
