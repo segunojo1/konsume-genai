@@ -3,7 +3,7 @@ import { mealCards } from "./cards";
 
 const SectionOne = () => {
   return (
-    <section className="font-satoshi text-[90px]/[120%] mt-56 font-bold lg:px-[90px] ">
+    <section className="font-satoshi text-[90px]/[120%] mt-56 font-bold lg:px-[90px] z-[50] ">
         <h2 className="max-w-fit h-fit max-h-[228px] mb-[101px] ">
           <span className="servup h-fit flex flex-col">Serve Up Your </span>
           <span className="servup">Healthy Journey</span>
