@@ -1,5 +1,6 @@
 export const mealCards = [
     {
+      top: 12,
       rotate: 6,
       cardimg: "/personalizedmealplans.svg",
       cardsticker: "/konsumesticker.svg",
@@ -8,9 +9,11 @@ export const mealCards = [
       colors: {
         textcolor: "#000000",
         bgcolor: "#BAADF4"
-      }
+      },
+      captionbg: "/vector1.svg",
     },
     {
+      top: 25,
       rotate: 0,
       cardimg: "/aipowerednutrition.svg",
       cardsticker: "/konsumesticker.svg",
@@ -19,9 +22,11 @@ export const mealCards = [
       colors: {
         textcolor: "#000000",
         bgcolor: "#E8E4FB"
-      }
+      },
+      captionbg: "/vector2.svg",
     },
     {
+      top: 3,
         rotate: -4.35,
         cardimg: "/aipowerednutrition.svg",
         cardsticker: "/konsumesticker.svg",
@@ -30,9 +35,11 @@ export const mealCards = [
         colors: {
             textcolor:"#000000",
             bgcolor: "#A392F0"
-        }
+        },
+        captionbg: "/vector3.svg",
       },
     {
+      top: 0,
       rotate: 7.14,
       cardimg: "/trackyourstreaks.svg",
       cardsticker: "/konsumesticker.svg",
