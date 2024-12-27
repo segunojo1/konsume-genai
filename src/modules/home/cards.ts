@@ -11,6 +11,7 @@ export const mealCards = [
         bgcolor: "#BAADF4"
       },
       captionbg: "/vector1.svg",
+      
     },
     {
       top: 25,
@@ -24,6 +25,7 @@ export const mealCards = [
         bgcolor: "#E8E4FB"
       },
       captionbg: "/vector2.svg",
+      
     },
     {
       top: 3,
@@ -37,6 +39,7 @@ export const mealCards = [
             bgcolor: "#A392F0"
         },
         captionbg: "/vector3.svg",
+        
       },
     {
       top: 0,
@@ -49,6 +52,7 @@ export const mealCards = [
         textcolor: "#ffffff",
         bgcolor: "#3C1CCB"
       }
+      
     },
   ];
   

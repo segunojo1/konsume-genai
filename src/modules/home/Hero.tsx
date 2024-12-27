@@ -3,25 +3,10 @@
 import Link from "next/link";
 import { Scribble } from "./Scribble";
 import { useEffect, useState } from "react";
+import { useIsPageLoaded } from "@/hooks/useIsPageLoaded";
 
 const Hero = () => {
-  const [isPageLoaded, setIsPageLoaded] = useState(false);
-
-  useEffect(() => {
-    const handlePageLoad = () => {
-      setIsPageLoaded(true);
-    };
-
-    if (document.readyState === "complete") {
-      handlePageLoad();
-    } else {
-      window.addEventListener("load", handlePageLoad);
-    }
-
-    return () => {
-      window.removeEventListener("load", handlePageLoad);
-    };
-  }, []);
+  const  {isPageLoaded} = useIsPageLoaded()
 
   return (
     <div className="md:min-w-full font-satoshi min-h-[120vh] bg-cover bg-no-repeat bg-center relative bg-[url('/herobg.svg')] hero max-w-[349px] flex flex-col gap-[54px] items-center mx-auto md:mx-0  2xl:px-[90px] px-[30px] z-[9999] ">

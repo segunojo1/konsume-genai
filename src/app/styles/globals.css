@@ -739,6 +739,7 @@ body {
   width: 100%;
   height: auto;
   z-index: -1;
+  
 }
 
 .path-animation {
@@ -756,3 +757,46 @@ body {
 #scribble {
   
 }
+
+.swiper-container {
+  max-width: 1000px;
+  height: 600px;
+  position: relative;
+}
+
+.feature {
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  text-align: start;
+  border-radius: 36px;
+}
+
+.pagination-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  padding: 0 20px;
+}
+
+.pagination-item {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+  width: fit-content;
+}
+
+.progress-bar {
+  width: 0;
+  height: 4px;
+  background-color: #735AF4;
+  transition: width 5s linear;
+}
+
+.pagination-item p {
+  margin-top: 5px;
+}
+
