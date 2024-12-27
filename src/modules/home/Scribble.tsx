@@ -162,26 +162,26 @@ export const Scribble = () => {
 };
 
 
-export const Scribble2 = ({isVisible}: {isVisible: boolean}) => {
+export const Scribble2 = ({ isVisible }: { isVisible: boolean }) => {
     const svgRef = useRef(null);
-        gsap.fromTo(
-          ".path-animation",
-          {
+    gsap.fromTo(
+        ".path-animation",
+        {
             strokeDasharray: "1000, 1000", // Hide the stroke initially
             strokeDashoffset: 1000, // Fully offset the stroke
-          },
-          {
+        },
+        {
             strokeDasharray: "300, 0", // Maintain stroke length
             strokeDashoffset: 0, // Animate to reveal the stroke
             duration: 2,
             ease: "power2.out", // Smooth easing
             scrollTrigger: {
-              trigger: svgRef.current, // Trigger animation when SVG is in view
-              start: "top 100%", // Start when top of SVG is 80% in viewport
-              toggleActions: "play none none none", // Play only once
+                trigger: svgRef.current, // Trigger animation when SVG is in view
+                start: "top 100%", // Start when top of SVG is 80% in viewport
+                toggleActions: "play none none none", // Play only once
             },
-          }
-        );
+        }
+    );
 
     return (
         <div ref={svgRef} className="absolute h-fit top-96 left-0 right-0">
@@ -189,6 +189,71 @@ export const Scribble2 = ({isVisible}: {isVisible: boolean}) => {
                 <path className={`${isVisible && "path-animation"}`} strokeDasharray="1500"
                     strokeDashoffset="1500" d="M10 267.83C53.4611 237.57 104.452 189.584 157.731 178.66C219.851 165.924 270.63 211.813 323.563 235.984C395.584 268.871 465.046 181.73 515.088 141.658C538.564 122.861 587.282 136.622 609.977 140.445C706.557 156.715 802.387 180.315 895.804 210.507C968.386 233.965 1030.35 208.07 1098.42 177.447C1169.67 145.394 1247.03 177.5 1317.39 197.768C1344.89 205.692 1368.46 212.198 1395.64 199.285C1422.95 186.301 1443.4 157.428 1473.88 151.364C1546.59 136.9 1619.17 202.138 1678.25 235.681C1707.95 252.539 1727.32 264.457 1760 256.911" stroke="#6D53E7" strokeWidth="262" strokeLinecap="round" />
             </svg>
+        </div>
+    );
+}
+
+export const Scribble3 = ({ isVisible }: { isVisible: boolean }) => {
+    const svgRef = useRef(null);
+    gsap.fromTo(
+        ".path-animation",
+        {
+            strokeDasharray: "1000, 1000", // Hide the stroke initially
+            strokeDashoffset: 1000, // Fully offset the stroke
+        },
+        {
+            strokeDasharray: "100, 0", // Maintain stroke length
+            strokeDashoffset: 0, // Animate to reveal the stroke
+            duration: 2,
+            ease: "power2.out", // Smooth easing
+            scrollTrigger: {
+                trigger: svgRef.current, // Trigger animation when SVG is in view
+                start: "top 100%", // Start when top of SVG is 80% in viewport
+                toggleActions: "play none none none", // Play only once
+            },
+        }
+    );
+
+    return (
+        <div ref={svgRef} className="absolute bottom-0 h-[225px] w-[324px] ">
+            <svg className="scribble-animation " width="497" height="334" viewBox="0 0 497 334" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <mask id="mask0_2187_24106" style={{ maskType: "alpha" }} maskUnits="userSpaceOnUse" x="48" y="6" width="343" height="246">
+                    <path className={`${isVisible && "path-animation"}`} d="M48.4406 17.0013C77.4689 26.2395 113.273 45.7901 153.895 84.5112C184.692 113.871 229.33 190.644 294.848 251.254C291.774 235.967 315.217 240.991 315.762 241.107C283.866 219.59 251.409 188.743 221.785 144.692C226.38 150.939 275.198 214.376 381.586 231.431C369.696 204.832 382.52 186.727 390.279 178.91C347.79 187.372 298.814 184.926 255.813 151.658C179.156 92.3447 128.75 27.5203 56.0923 6.77148C52.9441 7.76306 46.3005 10.6386 48.4406 17.0013Z" fill="#A1E8DF" />
+                </mask>
+                <g mask="url(#mask0_2187_24106)">
+                    <path className={`${isVisible && "path-animation"}`} strokeDasharray="1500"
+                        strokeDashoffset="1500" d="M44.9521 8C71.7855 17.3333 147.452 56.1 211.452 128.5C275.452 200.9 377.952 208 406.452 203M204.452 120.5C216.952 149.833 269.952 225.5 313.952 254" stroke="#A1E8DF" stroke-width="55" />
+                </g>
+                <mask id="mask1_2187_24106" style={{ maskType: "alpha" }} maskUnits="userSpaceOnUse" x="294" y="240" width="103" height="78">
+                    <path className={`${isVisible && "path-animation"}`}  d="M294.847 251.254C324.372 278.589 358.135 302.626 396.79 317.558C396.327 316.194 395.823 314.789 395.286 313.36C389.923 299.089 388.469 286.951 390.072 276.977C366.861 269.739 341.501 258.459 315.77 241.107H315.762C315.216 240.991 291.774 235.967 294.847 251.254Z" fill="#86CEEC" />
+                </mask>
+                <g mask="url(#mask1_2187_24106)">
+                    <path className={`${isVisible && "path-animation"}`} strokeDasharray="1500"
+                        strokeDashoffset="1500" d="M284.952 231C301.952 245.5 372.252 293.9 405.452 303.5" stroke="#86CEEC" stroke-width="50" />
+                </g>
+                <mask id="mask2_2187_24106" style={{ maskType: "alpha" }} maskUnits="userSpaceOnUse" x="402" y="280" width="95" height="54">
+                    <path className={`${isVisible && "path-animation"}`}  d="M406.574 317.078C406.574 317.078 407.293 318.797 408.226 321.664H408.235C435.272 330.613 464.606 335.051 496.452 333.142V290.248C496.452 290.248 495.37 289.314 493.395 287.794C483.182 289.149 448.369 292.347 403.442 280.786C399.187 296.131 406.574 317.078 406.574 317.078Z" fill="#86CEEC" />
+                </mask>
+                <g mask="url(#mask2_2187_24106)">
+                    <path className={`${isVisible && "path-animation"}`} strokeDasharray="1500"
+                        strokeDashoffset="1500" d="M389.452 297.5C402.952 302.167 471.452 314.6 513.452 313" stroke="#86CEEC" stroke-width="50" />
+                </g>
+                <mask id="mask3_2187_24106" style={{ maskType: "alpha" }} maskUnits="userSpaceOnUse" x="389" y="276" width="20" height="46">
+                    <path className={`${isVisible && "path-animation"}`}  d="M395.286 313.36C395.824 314.789 396.328 316.194 396.79 317.557C400.558 319.02 404.368 320.392 408.227 321.664C407.293 318.797 406.574 317.078 406.574 317.078C406.574 317.078 399.187 296.131 403.442 280.786C399.079 279.663 394.617 278.398 390.072 276.977C388.469 286.951 389.924 299.089 395.286 313.36Z" fill="#68DACB" />
+                </mask>
+                <g mask="url(#mask3_2187_24106)">
+                    <path className={`${isVisible && "path-animation"}`} strokeDasharray="1500"
+                        strokeDashoffset="1500" d="M383.952 296.5L413.452 303.5" stroke="#68DACB" stroke-width="50" />
+                </g>
+                <mask id="mask4_2187_24106" style={{ maskType: "alpha" }} maskUnits="userSpaceOnUse" x="-28" y="0" width="85" height="18">
+                    <path className={`${isVisible && "path-animation"}`}  d="M-27.5479 2.83836L-16.6404 6.28409L-10.5092 9.13488L-8.76565 10.2504C4.89335 8.77957 24.3283 9.3332 48.4402 17.0014C46.3 10.6388 52.9436 7.7632 56.0919 6.77162C31.4181 -0.268585 4.16615 -2.22696 -27.5479 2.83836Z" fill="#A1E8DF" />
+                </mask>
+                <g mask="url(#mask4_2187_24106)">
+                    <path className={`${isVisible && "path-animation"}`} strokeDasharray="1500"
+                        strokeDashoffset="1500" d="M-28.0479 7.50037C-16.8812 4.66703 30.7521 3.10037 57.9521 13.5004" stroke="#A1E8DF" stroke-width="40" />
+                </g>
+            </svg>
+
         </div>
     );
 }

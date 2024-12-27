@@ -14,7 +14,6 @@ const SectionOne = () => {
     target: scrollRef,
     offset: ["start end", "end start"], // When the section comes into view
   });
-  const dynamicPadding = useTransform(scrollYProgress, [0, 1], [400, 0]); // Optional padding
   const dynamicGap = useTransform(scrollYProgress, [0.4, 1], [0, 100]); // Adjust range as needed
 
   return (

@@ -2,7 +2,6 @@ import Image from "next/image";
 import vector5 from "../../../public/vector5.svg";
 import vector6 from "../../../public/vector6.svg";
 import scribble from "../../../public/scribble2.svg";
-import Link from "next/link";
 import { Swiper as SwiperType } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useEffect, useRef } from "react";
@@ -70,13 +69,10 @@ const SectionTwo = () => {
   return (
     <div id="magic" className=" flex flex-col items-center z-[999] mt-[100px] relative">
       <div className=" flex flex-col gap-[8px] items-center justify-center pt-[141px] mb-[56px]">
-        <h1 className="lg:text-[90px]/[100px] font-bold -tracking-[7px] servup text-[#0A1D4B]">Konsume For You!</h1>
-        <p className="font-medium text-[22px]/[27px]">
-          Here&apos;s what we&apos;re about
-        </p>
+        <h2 className="lg:text-[90px]/[100px] font-bold -tracking-[7px] servup text-[#0A1D4B]">Konsume For You!</h2>
       </div>
       <Image src={vector5} alt="" className="absolute left-0 bottom-0  transition-all" />
-      <Image src={vector6} alt="" className="absolute right-0 top-0 bottom-0 my-auto" />
+      <Image src={vector6} alt="" className="absolute right-0 top-0 animate-pulse bottom-0 my-auto" />
       <Image src={scribble} alt="" className="absolute top-0 bottom-0 my-auto left-0" />
 
       <div className="swiper-container space-y-9">
@@ -108,11 +104,11 @@ const SectionTwo = () => {
           ))}
         </Swiper>
 
-        <div className="pagination-container">
+        <ul className="pagination-container">
           <Image src={prevbtn} alt="next" onClick={handlePrev} className="cursor-pointer" />
 
           {features.map((feature, index) => (
-            <div className="pagination-item relative max-w-[130px]" key={index}>
+            <li className="pagination-item relative max-w-[135px]" key={index}>
               <div className="w-full flex h-1 bg-[#A7A7A7]">
                 <div
                   ref={(el) => {
@@ -122,22 +118,14 @@ const SectionTwo = () => {
                 ></div>
               </div>
               <p ref={(el) => {
-                    textRefs.current[index] = el; // Assign the element or null
-                  }} className="text-base/[20px] text-start">{feature.value}</p>
-            </div>
+                textRefs.current[index] = el; // Assign the element or null
+              }} className="text-base/[20px] font-medium text-start">{feature.value}</p>
+            </li>
           ))}
           <Image src={nextbtn} alt="next" onClick={handleNext} className="cursor-pointer"
           />
-        </div>
+        </ul>
       </div>
-
-
-      <Link
-        href="/auth/signup"
-        className=" mt-[95px] text-[19px] font-bold rounded-[40px] bg-primarygtext text-primary-bg px-[25px] py-[10px]"
-      >
-        Join Us
-      </Link>
     </div>
   );
 };
