@@ -162,32 +162,13 @@ export const Scribble = () => {
 };
 
 
-export const Scribble2 = ({ isVisible }: { isVisible: boolean }) => {
-    const svgRef = useRef(null);
-    gsap.fromTo(
-        ".path-animation",
-        {
-            strokeDasharray: "1000, 1000", // Hide the stroke initially
-            strokeDashoffset: 1000, // Fully offset the stroke
-        },
-        {
-            strokeDasharray: "300, 0", // Maintain stroke length
-            strokeDashoffset: 0, // Animate to reveal the stroke
-            duration: 2,
-            ease: "power2.out", // Smooth easing
-            scrollTrigger: {
-                trigger: svgRef.current, // Trigger animation when SVG is in view
-                start: "top 100%", // Start when top of SVG is 80% in viewport
-                toggleActions: "play none none none", // Play only once
-            },
-        }
-    );
+export const Scribble2 = () => {
+    
 
     return (
-        <div ref={svgRef} className="absolute h-fit top-96 left-0 right-0">
-            <svg className="scribble-animation " width="1570" height="399" viewBox="0 0 1770 399" fill="none" xmlns="http://www.w3.org/2000/svg" >
-                <path className={`${isVisible && "path-animation"}`} strokeDasharray="1500"
-                    strokeDashoffset="1500" d="M10 267.83C53.4611 237.57 104.452 189.584 157.731 178.66C219.851 165.924 270.63 211.813 323.563 235.984C395.584 268.871 465.046 181.73 515.088 141.658C538.564 122.861 587.282 136.622 609.977 140.445C706.557 156.715 802.387 180.315 895.804 210.507C968.386 233.965 1030.35 208.07 1098.42 177.447C1169.67 145.394 1247.03 177.5 1317.39 197.768C1344.89 205.692 1368.46 212.198 1395.64 199.285C1422.95 186.301 1443.4 157.428 1473.88 151.364C1546.59 136.9 1619.17 202.138 1678.25 235.681C1707.95 252.539 1727.32 264.457 1760 256.911" stroke="#6D53E7" strokeWidth="262" strokeLinecap="round" />
+        <div  className="absolute h-fit top-96 left-0 right-0">
+            <svg width="1570" height="399" viewBox="0 0 1770 399" fill="none" xmlns="http://www.w3.org/2000/svg" >
+                <path  d="M10 267.83C53.4611 237.57 104.452 189.584 157.731 178.66C219.851 165.924 270.63 211.813 323.563 235.984C395.584 268.871 465.046 181.73 515.088 141.658C538.564 122.861 587.282 136.622 609.977 140.445C706.557 156.715 802.387 180.315 895.804 210.507C968.386 233.965 1030.35 208.07 1098.42 177.447C1169.67 145.394 1247.03 177.5 1317.39 197.768C1344.89 205.692 1368.46 212.198 1395.64 199.285C1422.95 186.301 1443.4 157.428 1473.88 151.364C1546.59 136.9 1619.17 202.138 1678.25 235.681C1707.95 252.539 1727.32 264.457 1760 256.911" stroke="#6D53E7" strokeWidth="262" strokeLinecap="round" />
             </svg>
         </div>
     );

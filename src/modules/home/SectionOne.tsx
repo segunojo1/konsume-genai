@@ -27,20 +27,19 @@ const SectionOne = () => {
         ref={scrollRef}
         key="servup"
         className="flex space-x-1 min-h-[150%] justify-center mt-12 mx-auto"
-        style={{
-          marginRight: dynamicGap   // Append 'px' to the gap value
-        }}
+        
       >
-        {mealCards.map((card) => (
-          <motion.div key={card.rotate} style={{
-            marginRight: dynamicGap   // Append 'px' to the gap value
-          }}>
+        {mealCards.map((card, idx) => (
+          <motion.div 
+          key={card.rotate} 
+          style={idx !== 3 ? { marginRight: dynamicGap } : undefined}
+        >
             <FeatureCard {...card} />
           </motion.div>
         ))}
       </motion.div>
       {isPageLoaded ? (
-        <Scribble2 isVisible={isVisible} />
+        <Scribble2 />
       ) : (
         <div>Loading...</div> // Optional loading spinner or fallback
       )}
@@ -66,7 +65,7 @@ type FeatureCardProps = {
 const FeatureCard = ({ top, rotate, cardimg, cardsticker, cardtitle, carddesc, colors, captionbg }: FeatureCardProps) => {
   return (
     <motion.figure  drag
-    dragTransition={{ power: 0.1 }}   transition={{ ease: "easeOut", type: "spring", duration: 0.3, damping: 90 }} className={`p-6 overflow-hidden mt-[${top}px] min-h-[389px] bg-secondary-300 w-fit max-w-[290px] space-y-5 rounded-[21px] rotate-[${rotate}deg]`} style={{ transform: `rotate(${rotate}deg)`, backgroundColor: `${colors.bgcolor}`, color: colors.textcolor, marginTop: `${top}px` }}>
+    dragTransition={{ power: 0.1 }}   transition={{ ease: "easeOut", type: "spring", duration: 0.3, damping: 90 }} className={`z-[9999] relative p-6 overflow-hidden mt-[${top}px] min-h-[389px] bg-secondary-300 w-fit max-w-[290px] space-y-5 rounded-[21px] rotate-[${rotate}deg]`} style={{ transform: `rotate(${rotate}deg)`, backgroundColor: `${colors.bgcolor}`, color: colors.textcolor, marginTop: `${top}px` }}>
       <div className="relative">
         <Image draggable={false} src={cardimg} width={206} height={199} alt="Feature card" className=" mx-auto" />
         <Image draggable={false} src={cardsticker} width={57} height={57} alt="konsume sticker" className="absolute -top-3 right-0 rotate-6" />

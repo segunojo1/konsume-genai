@@ -42,9 +42,16 @@ const SectionTwo = () => {
 
       progressBarRefs.current.forEach((bar, index) => {
         if (bar) {
-          bar.style.width = index === activeIndex ? "100%" : "0%";
+          if (index === activeIndex) {
+            bar.style.transition = "width 5s linear"; // Enable transition for increasing width
+            bar.style.width = "100%";
+          } else {
+            bar.style.transition = "width 1s linear"; // Disable transition for reducing width
+            bar.style.width = "0%";
+          }
         }
       });
+      
       textRefs.current.forEach((text, index) => {
         if (text) {
           text.style.color = index === activeIndex ? "#1C0D5F" : "#A7A7A7";
