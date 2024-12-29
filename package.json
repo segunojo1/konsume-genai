@@ -20,6 +20,7 @@
     "@radix-ui/react-slot": "^1.1.0",
     "@radix-ui/react-tooltip": "^1.1.6",
     "@reduxjs/toolkit": "^2.2.7",
+    "@stacks/connect": "^7.9.0",
     "@tabler/icons-react": "^3.14.0",
     "@types/js-cookie": "^3.0.6",
     "@types/jwt-decode": "^3.1.0",
