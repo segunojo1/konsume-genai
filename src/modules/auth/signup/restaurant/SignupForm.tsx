@@ -1,11 +1,11 @@
+"use client"
+
 import { Form } from "@/components/ui/form";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import OtpModal from "@/modules/auth/OtpModal";
 import { useState } from "react";
 import { axiosKonsumeInstance } from "@/http/konsume";
-import Cookies from "js-cookie";
 import { toast } from "react-toastify";
 import { SignupActions } from "./SignupActions";
 import { SignupFields } from "./SignupFields";
