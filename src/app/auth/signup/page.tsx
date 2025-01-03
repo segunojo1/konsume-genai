@@ -3,11 +3,11 @@
 import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
+import Link from 'next/link';
+import ChooseAccount from '@/modules/auth/ChooseAccount';
 import { personalAccountFeatures } from '@/app/helpers/personalAccountFeatures';
 import { restaurantAccountFeatures } from '@/app/helpers/restaurantAccountFeatures';
-import Link from 'next/link';
 import withoutAuth from '@/app/helpers/withoutAuth';
-import ChooseAccount from '@/modules/auth/ChooseAccount';
 
 const Signup = () => {
   const router = useRouter();

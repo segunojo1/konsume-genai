@@ -1,5 +1,5 @@
 "use client"
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSetupContext } from '../../context/SetupContext';
 import { axiosKonsumeInstance } from '../../http/konsume';
 import Cookies from 'js-cookie';
@@ -8,7 +8,6 @@ import DashboardBody from '@/modules/dashboard/DashboardBody';
 import DashboardHead from '@/modules/dashboard/DashboardHead';
 import { useUserContext } from '@/context/UserContext';
 import { Steps } from 'intro.js-react';
-import MainLayout from '@/components/Layout/MainLayout';
 
 const Dashboard = () => {
   const { 

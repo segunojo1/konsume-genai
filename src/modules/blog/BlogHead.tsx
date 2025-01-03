@@ -1,6 +1,8 @@
+"use client"
+
 import { Button } from '@/components/ui/button'
 import Image from 'next/image'
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import GenerateBlogModal from './GenerateBlogModal'
 import {
   Dialog,

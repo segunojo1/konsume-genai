@@ -8,6 +8,7 @@ import MealHead from '@/modules/dashboard/meal-details/MealHead';
 import { useRouter } from 'next/router';
 import MainLayout from '@/components/Layout/MainLayout';
 import { parseBoldText } from '@/app/helpers/parseBoldText';
+import withAuth from '@/app/helpers/withAuth';
 
 const MealDetails = () => {
   const router = useRouter();

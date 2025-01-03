@@ -1,3 +1,4 @@
+"use client"
 import SearchBlog from '@/components/ui/SearchBlog'
 import BlogContext from '@/context/BlogContext';
 import React, { useContext } from 'react'
