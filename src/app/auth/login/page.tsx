@@ -12,8 +12,8 @@ import SocialLogin from '@/modules/auth/login/SocialLogin';
 import Cookies from 'js-cookie';
 import { z } from 'zod';
 import { useUserContext } from '@/context/UserContext';
-import withoutAuth from '@/app/helpers/withoutAuth';
 import SignUpLink from '@/modules/auth/login/SignUpLink';
+import withoutAuth from '@/app/helpers/withoutAuth';
 
 
 // Schema for form validation using zod

@@ -1,3 +1,5 @@
+"use client"
+
 import { BlogProps } from '@/@types'
 import Image from 'next/image'
 import Link from 'next/link'
