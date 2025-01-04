@@ -1,11 +1,10 @@
 import type React from "react";
 import { useContext, useEffect, useState } from "react";
-import Cookies from "js-cookie";
 import { Calendar } from "@/components/ui/calendar";
 import type { DateRange } from "react-day-picker";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import Card from "./card";
 import NutritionalInfoBox from "./nutritional-info-box";
 import getRandomColor from "../utils";
@@ -13,7 +12,7 @@ import { NutritionalValue } from "@/@types/timetable";
 import { useUserContext } from "@/context/UserContext";
 import SpotlightedMealCard from "@/modules/dashboard/body/SpotlightedMealCard";
 import DashboardContext from "@/context/DashboardContext";
-import nutritionalInfo, {colors} from "@/app/helpers/timetable/data";
+import nutritionalInfo from "@/app/helpers/timetable/data";
 
 
 type Props = {

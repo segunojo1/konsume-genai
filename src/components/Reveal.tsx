@@ -1,7 +1,12 @@
 import React, { useEffect, useRef } from 'react'
 import {motion, useInView, useAnimation} from 'framer-motion'
 
-const Reveal = ({children, width='fit-content'}:any) => {
+interface RevealProps {
+    children: React.ReactNode; 
+    width?: string; 
+  }
+
+  const Reveal: React.FC<RevealProps> = ({ children, width = 'fit-content' }) => {
     const ref = useRef(null);
     const isInView = useInView(ref, {once: false});
     const mainControls = useAnimation()

@@ -1,5 +1,5 @@
 "use client"
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import MainLayout from "@/components/Layout/MainLayout";
 import ChatBotContext from "@/context/ChatBotContext";
 import Image from "next/image";
@@ -22,11 +22,11 @@ const Chat = () => {
     containerRef,
   } = useContext(ChatBotContext);
 
-  const handleMessage = (e: any) => {
+  const handleMessage = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUserMessage(e.target.value);
   };
 
-  const handleEnter = (event: any) => {
+  const handleEnter = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter" && !event.shiftKey) {
       event.preventDefault();
       sendMessage(event);

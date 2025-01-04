@@ -7,7 +7,7 @@ import BlogHead from '@/modules/blog/BlogHead'
 import FilterBlog from '@/modules/blog/FilterBlog'
 import Image from 'next/image'
 import Link from 'next/link'
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 
 const Bookmarks = () => {
     const { bookmarkedBlogs, tempBookmarks, setTempBookmarks, setActiveBlog, activeBlog } = useContext(BlogContext);

@@ -7,9 +7,15 @@ import MainBlogText from '@/modules/blog/MainBlogText'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 import React, { useEffect, useState } from 'react'
-import Cookies from 'js-cookie'
 import { useUserContext } from '@/context/UserContext'
 
+type blogType = {
+  $id: string;
+  category: string;
+  id: number;
+  text: string;
+  title: string;
+}
 const SearchedBlog = () => {
   const router = useRouter();
   const { title } = router.query; // Dynamic route title
@@ -24,7 +30,7 @@ const SearchedBlog = () => {
       try {
         // Check localStorage for the blog
         const blogs = JSON.parse(localStorage.getItem('blogs') || '[]');
-        const selectedBlog = blogs.find((blog: any) => blog.title === title);
+        const selectedBlog = blogs.find((blog: blogType) => blog.title === title);
 
         if (selectedBlog) {
           // Blog found in localStorage

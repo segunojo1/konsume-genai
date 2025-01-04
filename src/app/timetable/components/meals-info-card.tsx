@@ -5,7 +5,7 @@ import { ArrowDownRight, ArrowUpRight, Clock } from "lucide-react";
 import Image from "next/image";
 import getRandomColor, { getColorsByMealType } from "../utils";
 import type { MealDatatype } from "@/@types/timetable";
-import { CardBody, CardContainer, CardItem } from "@/components/ui/3d-card";
+import { CardContainer, CardItem } from "@/components/ui/3d-card";
 import NutritionalInfoBox from "./nutritional-info-box";
 import { cn } from "@/lib/utils";
 import Link from "next/link";

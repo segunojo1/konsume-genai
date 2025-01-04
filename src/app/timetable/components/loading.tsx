@@ -7,15 +7,15 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 const Loading = () => {
-  const [rotation, setRotation] = useState(0);
+  // const [rotation, setRotation] = useState(0);
 
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      setRotation((prevRotation) => (prevRotation + 1) % 360);
-    }, 16);
+  // useEffect(() => {
+  //   const intervalId = setInterval(() => {
+  //     setRotation((prevRotation) => (prevRotation + 1) % 360);
+  //   }, 16);
 
-    return () => clearInterval(intervalId);
-  }, []);
+  //   return () => clearInterval(intervalId);
+  // }, []);
   const [index, setIndex] = useState(0);
 
   const texts = [

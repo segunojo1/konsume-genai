@@ -1,6 +1,5 @@
 import React, { ReactNode } from 'react';
 
-import { boolean } from 'zod';
 import { StaticImageData } from 'next/image';
 
 // export all interfaces and types
@@ -119,8 +118,8 @@ export interface SetupProviderProps {
 export interface SetupContextType {
   userGoal: string;
   setUserGoal: React.Dispatch<React.SetStateAction<string>>;
-  possibleDiseases: any;
-  setPossibleDiseases: any;
+  possibleDiseases?: any;
+  setPossibleDiseases?: any;
   name: string | undefined;
   setName: React.Dispatch<React.SetStateAction<string | undefined>>;
   nationality: string;

@@ -4,9 +4,7 @@ import { Tabs } from "@/components/ui/tabs";
 import type { DateRange } from "react-day-picker";
 import {
   format,
-  addDays,
   eachDayOfInterval,
-  eachWeekOfInterval,
   parse,
 } from "date-fns";
 import { ChevronLeft, ChevronRight } from "lucide-react";
@@ -23,16 +21,8 @@ import {
 import Image from "next/image";
 import MealsInfoCard from "./meals-info-card";
 import DayContent from "./day-content";
-import Cookies from "js-cookie";
 import { useGetMealPlansQuery } from "@/redux/api/timetable.api";
 import Loading from "./loading";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
 import { useUserContext } from "@/context/UserContext";
 
 type Props = {
@@ -175,7 +165,7 @@ function MainPanel({ date, open, setOpen }: Props) {
             style={{ gridAutoRows: "1fr" }}
             className="grid grid-cols-3 grid-auto-rows-1fr justify-between w-full"
           >
-            {weeks.map((week, index) => {
+            {weeks.map((week) => {
               const date = formatDateToDDMMYY(week);
 
               const filteredMeals =

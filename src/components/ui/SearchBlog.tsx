@@ -1,4 +1,4 @@
-import Image from 'next/image'
+
 import React, { useState } from 'react'
 import { Input } from './input'
 import { useRouter } from 'next/router';

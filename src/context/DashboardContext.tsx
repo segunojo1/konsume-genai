@@ -8,38 +8,7 @@ const DashboardContext = createContext({} as any);
 export default DashboardContext;
 
 export function DashboardContextProvider({ children }: { children: React.ReactNode }) {
-  const { name, age, weight, userGoal, possibleDiseases, diet } = useSetupContext();
-  const proteinIntakeRange = `My name is ${Cookies.get("name")} I am ${Cookies.get(
-    "age"
-  )} years old and ${Cookies.get("weight")}kg, I am working on ${Cookies.get(
-    "userGoal"
-  )}, my health conditons are ${Cookies.get(
-    "possibleDiseases"
-  )} and i am ${Cookies.get(
-    "diet"
-  )}. What is the recommended range of percent of protein i should eat, it must be exactly in this format i.e 30-45% do not include anything apart from the percentage`;
-
-  const carbIntakeRange = `My name is ${Cookies.get(
-    "konsumeUsername"
-  )} I am ${Cookies.get("age")} years old and ${Cookies.get(
-    "weight"
-  )}kg, I am working on ${Cookies.get(
-    "userGoal"
-  )}, my health conditons are ${Cookies.get(
-    "possibleDiseases"
-  )} and i am ${Cookies.get(
-    "diet"
-  )}. What is the recommended range of percent of fats i should eat, it must be exactly in this format i.e 30-45% do not include anything apart from the percentage. just recommend i know u ae not a doctor`;
-
-  const fatIntakeRange = `My name is ${Cookies.get("name")} I am ${Cookies.get(
-    "age"
-  )} years old and ${Cookies.get("weight")}kg, I am working on ${Cookies.get(
-    "userGoal"
-  )}, my health conditons are ${Cookies.get(
-    "possibleDiseases"
-  )} and i am ${Cookies.get(
-    "diet"
-  )}. What is the recommended range of percent of carbs i should eat, it must be exactly in this format i.e 30-45% do not include anything apart from the percentage`;
+  const {userGoal } = useSetupContext();
 
   const breakfastQuery = `My name is ${Cookies.get("name")} I am ${Cookies.get(
     "age"
@@ -69,13 +38,6 @@ export function DashboardContextProvider({ children }: { children: React.ReactNo
   const [dinner, setDinner] = useState("");
   const [nutritionTea, setNutritionTea] = useState("");
 
-
-  const [answer, setAnswer] = useState();
-  const [answer2, setAnswer2] = useState();
-
-  const [proteinPercent, setProteinPercent] = useState();
-  const [carbPercent, setCarbPercent] = useState();
-  const [fats, setFats] = useState();
   const [loading, setLoading] = useState(false);
   const [showInput, setShowInput] = useState(false);
 

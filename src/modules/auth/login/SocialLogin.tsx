@@ -21,9 +21,10 @@ const SocialLogin = () => {
       redirectTo: '/',
       onFinish: async () => {
         let userData = userSession.loadUserData();
-        const {data} = await axiosKonsumeInstance.post('/api/auth/login', userData, {
-          headers: { 'Content-Type': 'multipart/form-data' },
-        })
+        console.log(userData);
+        // const {data} = await axiosKonsumeInstance.post('/api/auth/login', userData, {
+        //   headers: { 'Content-Type': 'multipart/form-data' },
+        // })
         route.push('/dashboard')
       },
       userSession,

@@ -1,47 +1,42 @@
 "use client"
 import React, { useEffect, useState } from 'react';
-import { useSetupContext } from '../../context/SetupContext';
-import { axiosKonsumeInstance } from '../../http/konsume';
-import Cookies from 'js-cookie';
-import { useRouter } from 'next/navigation';
 import DashboardBody from '@/modules/dashboard/DashboardBody';
 import DashboardHead from '@/modules/dashboard/DashboardHead';
-import { useUserContext } from '@/context/UserContext';
 import { Steps } from 'intro.js-react';
 
 const Dashboard = () => {
-  const { 
-    userGoal, 
-    name, 
-    userID, 
-    setPossibleDiseases, 
-    setUserGoal, 
-    setWeight, 
-    setDiet, 
-    setAge, 
-    setNationality 
-  } = useSetupContext();
-  const {profileID}:any = useUserContext()
+  // const { 
+  //   userGoal, 
+  //   name, 
+  //   userID, 
+  //   setPossibleDiseases, 
+  //   setUserGoal, 
+  //   setWeight, 
+  //   setDiet, 
+  //   setAge, 
+  //   setNationality 
+  // } = useSetupContext();
+  // const {profileID}:any = useUserContext()
 
-  const router = useRouter();
+  // const router = useRouter();
 
-  const getUserDetails = async () => {
-    try {
-      const { data } = await axiosKonsumeInstance.get(`/api/profile/${profileID}`, {
-        headers: {
-          Authorization: `Bearer ${Cookies.get('ktn')}`,
-        },
-      });
-      setPossibleDiseases(data?.value?.allergies.$values);
-      setUserGoal(data?.value?.userGoals.$values);
-      setWeight(data?.value?.weight);
-      setDiet(data?.value?.dietType);
-      setAge(data?.value?.age);
-      setNationality(data?.value?.nationality);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  // const getUserDetails = async () => {
+  //   try {
+  //     const { data } = await axiosKonsumeInstance.get(`/api/profile/${profileID}`, {
+  //       headers: {
+  //         Authorization: `Bearer ${Cookies.get('ktn')}`,
+  //       },
+  //     });
+  //     setPossibleDiseases(data?.value?.allergies.$values);
+  //     setUserGoal(data?.value?.userGoals.$values);
+  //     setWeight(data?.value?.weight);
+  //     setDiet(data?.value?.dietType);
+  //     setAge(data?.value?.age);
+  //     setNationality(data?.value?.nationality);
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
   const steps = [
     {
       element: '.timetable',

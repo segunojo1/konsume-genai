@@ -20,7 +20,6 @@ const formSchema = z.object({
 });
 
 export const SignupForm = () => {
-  const [showOtp, setShowOtp] = useState(false);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -35,7 +34,7 @@ export const SignupForm = () => {
 
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      const { data } = await toast.promise(
+      await toast.promise(
         axiosKonsumeInstance.post(
           "/api/Restaurant",
           {

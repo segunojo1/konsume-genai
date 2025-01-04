@@ -1,11 +1,11 @@
 // utils/withAuth.tsx
-import axios from 'axios';
 import React, { useEffect } from 'react';
 import Cookies from 'js-cookie';
 import { useRouter } from 'next/navigation';
 import isAuthenticated from './isAuthenticated';
 import { axiosKonsumeInstance } from '@/http/konsume';
 
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
 const withHigherAuth = <P extends {}>(
   WrappedComponent: React.ComponentType<P>
 ) => {
@@ -38,7 +38,7 @@ const withHigherAuth = <P extends {}>(
           if (response.data?.value == true) {
             router.push('/dashboard');
           }
-        } catch (error) {
+        } catch {
           Cookies.remove('ktn');
           router.push('/auth/login');
         }

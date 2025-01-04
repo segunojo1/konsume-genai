@@ -1,5 +1,5 @@
-import { Button } from "@/components/ui/button"
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
+
+import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form"
 import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp"
 import { useSetupContext } from "@/context/SetupContext"
 import { axiosKonsumeInstance } from "@/http/konsume"
@@ -19,7 +19,6 @@ const FormSchema = z.object({
 
 const OtpModal = () => {
     const route = useRouter();
-    const {userID} = useSetupContext();
 
     const form = useForm<z.infer<typeof FormSchema>>({
         resolver: zodResolver(FormSchema),
@@ -31,7 +30,7 @@ const OtpModal = () => {
     async function onSubmit(data: z.infer<typeof FormSchema>) {
         
         try {
-            const resp = await toast.promise(
+            await toast.promise(
                 axiosKonsumeInstance.get(`/api/VerificationCode/VerifyCode/${data.pin}/${Cookies.get("userid")}`
             ),
                 {
@@ -86,7 +85,7 @@ const OtpModal = () => {
                     </form>
                 </Form>
                 <h3 className=" md:text-desktop-highlight text-desktop-caption font-bold text-center">Enter OTP code - <br />
-                    Didn't receive the code? Check your spam folder or try resending</h3>
+                    Didn&apos;t receive the code? Check your spam folder or try resending</h3>
                 <p className="md:text-desktop-feature text-desktop-highlight font-bold text-secondary-900">Resend OTP code</p>
             </div>
 

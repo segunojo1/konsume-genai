@@ -1,12 +1,11 @@
 'use client'
 import { ChangeEvent, createContext, useEffect, useState } from 'react';
 import { MainLayoutContextProps } from '../@types';
-import Cookies from 'js-cookie';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import { StaticImport } from 'next/dist/shared/lib/get-img-props';
 import { toast } from 'react-toastify';
 import { useUserContext } from './UserContext';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 
 const ScannerContext = createContext<MainLayoutContextProps>({} as any);
 export default ScannerContext;
