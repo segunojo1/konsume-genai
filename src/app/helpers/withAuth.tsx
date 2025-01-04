@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
-import { useRouter } from "next/router";
 import isAuthenticated from "./isAuthenticated";
 import Cookies from "js-cookie";
+import { useRouter } from "next/navigation";
 
 // this would change later on once backend has the authentication
 // working.
