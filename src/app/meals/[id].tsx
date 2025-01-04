@@ -1,22 +1,16 @@
 import MainLayout from "@/components/Layout/MainLayout";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import SearchBar from "@/components/ui/SearchBar";
-import MainLayoutContext from "@/context/LayoutContext";
 import gemini from "@/http/gemini";
-import FilterMeal from "@/modules/meals/FilterMeal";
-import MealCard from "@/modules/meals/MealCard";
 import MealInfo from "@/modules/meals/MealInfo";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { useContext, useEffect, useRef, useState } from "react";
 import Cookies from "js-cookie";
-import { renderTextWithBold } from "@/helpers/renderTextWithBold";
 import MealsContext from "@/context/MealsContext";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import { A11y, Navigation, Pagination, Scrollbar } from "swiper/modules";
-import withAuth from "@/helpers/withAuth";
+import { A11y, Pagination, Scrollbar } from "swiper/modules";
 import CreateProfileLoader from "@/components/animated-visual-cues/CreateProfileLoader";
 import Markdown from "react-markdown";
 import { toast } from "sonner";
@@ -303,4 +297,4 @@ const fatIntakeRange = `What is the range of percent of fats contained in the me
   );
 };
 
-export default withAuth(Meal);
+export default (Meal);
