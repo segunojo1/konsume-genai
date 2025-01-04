@@ -22,9 +22,7 @@ export function BlogContextProvider({ children }: { children: React.ReactNode })
     const [tempBookmarks, setTempBookmarks] = useState(bookmarkedBlogs);
     const [loadingBlog, setLoadingBlog] = useState(false)
     const {getProfileID} = useUserContext();
-    const router = useRouter();
     const pathname = usePathname()
-    const dataFetchedRef = useRef(false);
 
     useEffect(() => {
         console.log('hi');

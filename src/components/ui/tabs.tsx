@@ -1,55 +1,77 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import * as TabsPrimitive from "@radix-ui/react-tabs"
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
 
-import { cn } from "@/lib/utils"
+type Tab = {
+  title: string;
+  value: string;
+  content?: string | React.ReactNode | any;
+};
 
-const Tabs = TabsPrimitive.Root
+export const Tabs = ({
+  tabs: propTabs,
+  containerClassName,
+  activeTabClassName,
+  tabClassName,
+}: {
+  tabs: Tab[];
+  containerClassName?: string;
+  activeTabClassName?: string;
+  tabClassName?: string;
+}) => {
+  const [active, setActive] = useState<Tab>(propTabs[0]);
+  const [tabs, setTabs] = useState<Tab[]>(propTabs);
 
-const TabsList = React.forwardRef<
-  React.ElementRef<typeof TabsPrimitive.List>,
-  React.ComponentPropsWithoutRef<typeof TabsPrimitive.List>
->(({ className, ...props }, ref) => (
-  <TabsPrimitive.List
-    ref={ref}
-    className={cn(
-      "inline-flex h-9 items-center justify-center rounded-lg bg-muted p-1 text-muted-foreground",
-      className
-    )}
-    {...props}
-  />
-))
-TabsList.displayName = TabsPrimitive.List.displayName
+  // useEffect(() => {
+  //   setTabs(propTabs);
+  //   setActive(propTabs[0]);
+  // }, [propTabs]);
 
-const TabsTrigger = React.forwardRef<
-  React.ElementRef<typeof TabsPrimitive.Trigger>,
-  React.ComponentPropsWithoutRef<typeof TabsPrimitive.Trigger>
->(({ className, ...props }, ref) => (
-  <TabsPrimitive.Trigger
-    ref={ref}
-    className={cn(
-      "inline-flex items-center justify-center whitespace-nowrap rounded-md px-3 py-1 text-sm font-medium ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-background data-[state=active]:text-foreground data-[state=active]:shadow",
-      className
-    )}
-    {...props}
-  />
-))
-TabsTrigger.displayName = TabsPrimitive.Trigger.displayName
+  const moveSelectedTabToTop = (idx: number) => {
+    const newTabs = [...propTabs];
+    const selectedTab = newTabs.splice(idx, 1);
+    newTabs.unshift(selectedTab[0]);
+    setTabs(newTabs);
+    setActive(newTabs[0]);
+  };
 
-const TabsContent = React.forwardRef<
-  React.ElementRef<typeof TabsPrimitive.Content>,
-  React.ComponentPropsWithoutRef<typeof TabsPrimitive.Content>
->(({ className, ...props }, ref) => (
-  <TabsPrimitive.Content
-    ref={ref}
-    className={cn(
-      "mt-2 ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
-      className
-    )}
-    {...props}
-  />
-))
-TabsContent.displayName = TabsPrimitive.Content.displayName
+  return (
+    <div className="space-y-10 flex flex-col items-center w-full">
+      <div
+        className={cn(
+          "flex flex-row items-center justify-start w-max [perspective:1000px] relative overflow-auto sm:overflow-visible no-visible-scrollbar bg-secondary-100 rounded-xl py-[5px] px-[18px]",
+          containerClassName
+        )}
+      >
+        {propTabs.map((tab, idx) => (
+          <button
+            key={tab.title}
+            onClick={() => {
+              moveSelectedTabToTop(idx);
+            }}
+            className={cn("relative px-6 py-[10px]", tabClassName)}
+            style={{
+              transformStyle: "preserve-3d",
+            }}
+          >
+            {active.value === tab.value && (
+              <motion.div
+                layoutId="clickedbutton"
+                transition={{ type: "spring", bounce: 0.3, duration: 0.6 }}
+                className={cn(
+                  "absolute inset-0 bg-base-white rounded-xl  ",
+                  activeTabClassName
+                )}
+              />
+            )}
 
-export { Tabs, TabsList, TabsTrigger, TabsContent }
+            <span className="relative block font-medium">{tab.title}</span>
+          </button>
+        ))}
+      </div>
+      {active.content}
+    </div>
+  );
+};

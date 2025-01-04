@@ -10,7 +10,7 @@ import BlogCard from "@/modules/blog/BlogCard";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-import { A11y, Navigation, Pagination, Scrollbar } from "swiper/modules";
+import { A11y, Pagination, Scrollbar } from "swiper/modules";
 import { Button } from "@/components/ui/button";
 import { DashboardBlogSkeleton } from "@/components/skeleton-loaders/DashboardBlogSkeleton";
 interface DashboardHighlightsProp {

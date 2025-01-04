@@ -1,10 +1,9 @@
 import ChatBotContext from '@/context/ChatBotContext';
-import MainLayoutContext from '@/context/LayoutContext';
 import Image from 'next/image'
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect } from 'react'
 
-const ChatQuestion = ({isContentReplaced, setIsContentReplaced, img, text}: any) => {
-  const {userMessage, setUserMessage, sendMessage} = useContext(ChatBotContext)
+const ChatQuestion = ({img, text}: any) => {
+  const {userMessage, setUserMessage} = useContext(ChatBotContext)
 
   useEffect(() => {
     if (userMessage) {

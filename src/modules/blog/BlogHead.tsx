@@ -7,10 +7,7 @@ import GenerateBlogModal from './GenerateBlogModal'
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
-  DialogFooter,
   DialogHeader,
-  DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
 import { useUserContext } from '@/context/UserContext'
@@ -31,7 +28,7 @@ useEffect(() => {
             <h1 className="md:text-desktop-heading4 text-[28px]/[40px] font-bold z-50">Hello, {firstName ? firstName : '...' }</h1>
           </div>
           <p className="text-desktop-content text-primarygtext italic max-w-[388px]">
-            We've curated some blogs just for you, tailored to your goals and preferences.  Dive in to explore articles that match your needs, or feel free to <b>generate any nutrition-based blog using our AI!</b>
+            We&apos;ve curated some blogs just for you, tailored to your goals and preferences.  Dive in to explore articles that match your needs, or feel free to <b>generate any nutrition-based blog using our AI!</b>
           </p>
         </div>
         {/* <Button className='flex items-center border rounded' onClick={() => setShowModal(true)}>

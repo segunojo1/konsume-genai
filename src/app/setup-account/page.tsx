@@ -52,7 +52,7 @@ const SetupAccount = () => {
     setShowLoader(true);
     try {
       if (diet !== "") {
-        const { data } = await toast.promise(
+        await toast.promise(
           axiosKonsumeInstance.post(
             "/api/profile/create",
             {
@@ -101,9 +101,8 @@ const SetupAccount = () => {
         toast.error("Please select your diet");
         return;
       }
-    } catch (error: any) {
-      console.error(error);
-      toast.error(error?.response?.data?.error);
+    } catch {
+      toast.error("Error creating profile");
     }
   };
   const totalSteps = 5;

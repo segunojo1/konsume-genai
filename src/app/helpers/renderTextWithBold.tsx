@@ -1,7 +1,7 @@
 import React from "react";
 import { parseBoldText } from "./parseBoldText";
 
-export const renderTextWithBold = (text: any) => {
+export const renderTextWithBold = (text: string) => {
     const parts = parseBoldText(text);
 
     return parts.map((part, index) => {

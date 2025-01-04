@@ -1,6 +1,5 @@
-import React, { useContext, useEffect, useState } from "react";
-import veg from "../../../public/assets/kons.png";
-import { toast } from "react-toastify";
+import React, { useEffect, useState } from "react";
+import veg from "../../../../public/assets/kons.png";
 import Image from "next/image";
 import Cookies from "js-cookie";
 import { useSetupContext } from "../../../context/SetupContext";

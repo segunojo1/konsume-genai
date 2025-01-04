@@ -1,4 +1,4 @@
-export const parseBoldText = (text: any) => {
+export const parseBoldText = (text: string) => {
   const regex = /\*\*(.*?)\*\*/g;
   const parts = [];
   let lastIndex = 0;

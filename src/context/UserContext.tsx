@@ -3,7 +3,7 @@ import { createContext, useContext, useEffect, useState } from "react";
 
 import Cookies from "js-cookie";
 import { axiosKonsumeInstance } from "@/http/konsume";
-import { useRouter, usePathname } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { formatDateToDDMMYY } from "@/app/helpers/formatDateToDDMMYY";
 
 interface UserContextProps {

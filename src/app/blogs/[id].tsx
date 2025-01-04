@@ -12,6 +12,13 @@ import { useUserContext } from "@/context/UserContext";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
+type blogType = {
+  $id: string;
+  category: string;
+  id: number;
+  text: string;
+  title: string;
+}
 const BlogDetail = () => {
   const router = useRouter();
   const { id } = router.query; // Dynamic route ID
