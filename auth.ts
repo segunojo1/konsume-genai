@@ -10,17 +10,15 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   ],
   callbacks: {
     async jwt({ token, account }) {
-      // Persist the access and refresh tokens to the JWT
-      if (account) {
-        token.accessToken = account.access_token;
-        token.refreshToken = account.refresh_token;
+      // Persist the Google ID token (JWT) in the JWT object
+      if (account?.id_token) {
+        token.idToken = account.id_token;
       }
       return token;
     },
     async session({ session, token }) {
-      // Attach the access and refresh tokens to the session object
-      session.accessToken = token.accessToken;
-      session.refreshToken = token.refreshToken;
+      // Attach the ID token to the session object
+      session.idToken = token.idToken;
       return session;
     },
   },
