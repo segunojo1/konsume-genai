@@ -10,24 +10,24 @@ import { axiosKonsumeInstance } from '@/http/konsume'
 import axios from 'axios'
 
 const SocialLogin = () => {
-  // const loginWithStacks = () => {
-  //   showConnect({
-  //     appDetails: {
-  //       name: 'Konsume',
-  //       icon: window.location.origin + '/favicon.ico',
-  //     },
-  //     redirectTo: '/',
-  //     onFinish: async () => {
-  //       let userData = userSession.loadUserData();
-  //       console.log(userData);
-  //       // const {data} = await axiosKonsumeInstance.post('/api/auth/login', userData, {
-  //       //   headers: { 'Content-Type': 'multipart/form-data' },
-  //       // })
-  //       route.push('/dashboard')
-  //     },
-  //     userSession,
-  //   });
-  // }
+  const loginWithStacks = () => {
+    showConnect({
+      appDetails: {
+        name: 'Konsume',
+        icon: window.location.origin + '/favicon.ico',
+      },
+      redirectTo: '/',
+      onFinish: async () => {
+        let userData = userSession.loadUserData();
+        console.log(userData);
+        // const {data} = await axiosKonsumeInstance.post('/api/auth/login', userData, {
+        //   headers: { 'Content-Type': 'multipart/form-data' },
+        // })
+        route.push('/dashboard')
+      },
+      userSession,
+    });
+  }
   const { data: session } = useSession();
   const userSession = useUserSession();
   const route = useRouter()

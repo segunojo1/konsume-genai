@@ -1,3 +1,5 @@
+"use client"
+
 import React, { useEffect } from "react";
 import isAuthenticated from "./isAuthenticated";
 import Cookies from "js-cookie";
@@ -6,10 +8,10 @@ import { useRouter } from "next/navigation";
 // this would change later on once backend has the authentication
 // working.
 
-const withAuth = <P extends { children: React.ReactNode }>(
+const withAuth = <P extends object>(
   WrappedComponent: React.ComponentType<P>,
 ) => {
-  const Wrapper: React.FC<P> = (props) => {
+  const Wrapper: React.FC<P> = (props:any) => {
     const router = useRouter();
 
     useEffect(() => {
