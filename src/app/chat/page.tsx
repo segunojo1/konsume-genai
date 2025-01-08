@@ -9,6 +9,7 @@ import ChatInput from "@/modules/chat/ChatInput";
 import ChatMessages from "@/modules/chat/ChatMessages";
 import Link from "next/link";
 import Cookies from "js-cookie";
+import withAuth from "../helpers/withAuth";
 
 const Chat = () => {
   const {
@@ -82,4 +83,4 @@ const Chat = () => {
   );
 };
 
-export default (Chat);
+export default withAuth(Chat);

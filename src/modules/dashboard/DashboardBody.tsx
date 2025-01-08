@@ -52,7 +52,7 @@ const DashboardBody = () => {
         <div className="md:min-w-[648px] md:mx-auto flex flex-col md:flex-row justify-between gap-2 text-primarygtext">
           <SpotlightedMealCard meal={breakfast} loading={loading} />
           <div className="md:flex w-full flex-[.5] hidden md:min-w-[299px] h-[227px] ">
-            <DashboardProgressTracker />
+            <DashboardProgressTracker /                                                                                                      >
           </div>
           <Button className="cursor-pointer md:hidden bg-primarygtext mb-3 text-primary-bg-100 font-medium text-[12px] rounded-lg py-[11px] px-[32.5px] flex items-center justify-center" onClick={() => setShowTimetable(!showTimetable)}>
             {showTimetable ? "Close Todays Timetable" : "Open Todays Timetable"}

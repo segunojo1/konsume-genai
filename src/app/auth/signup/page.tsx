@@ -58,11 +58,10 @@ const Signup = () => {
                   <ChooseAccount key={title} title={title} text={text} />
                 ))}
               </div>
-              <Link href="/auth/personal">
-                <Button className="scroll-button overflow-hidden flex justify-end py-4 w-full rounded-[8px] border-2 border-primarygtext text-[#032902] text-desktop-highlight font-bold">
+              <Link href="/auth/personal"  className="scroll-button overflow-hidden flex justify-end py-4 w-full rounded-[8px] border-2 border-primarygtext text-[#032902] text-desktop-highlight font-bold">
+               
                   <span className="first-text"> Start Your Personalized Journey!</span>{' '}
                   <span className="second-text">Get Started</span>
-                </Button>
               </Link>
             </div>
 
@@ -73,13 +72,11 @@ const Signup = () => {
                   <ChooseAccount key={title} title={title} text={text} />
                 ))}
               </div>
-              <Button
-                type="button"
+              <Link href='/auth/restaurant'
                 className="flex mt-auto items-center justify-center mx-auto p-2 w-full h-[2.9rem] text-primary-bg-100 bg-primarygtext"
-                onClick={() => router.push('/auth/restaurant')}
               >
                 Showcase Your Restaurant!
-              </Button>
+              </Link>
             </div>
           </div>
         </div>

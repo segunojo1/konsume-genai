@@ -1,4 +1,5 @@
 import { BlogProps } from '@/@types'
+import withAuth from '@/app/helpers/withAuth'
 import MainLayout from '@/components/Layout/MainLayout'
 import { Button } from '@/components/ui/button'
 import BlogContext from '@/context/BlogContext'
@@ -67,4 +68,4 @@ const Bookmarks = () => {
     )
 }
 
-export default Bookmarks
+export default withAuth(Bookmarks);

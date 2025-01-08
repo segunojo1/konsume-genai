@@ -10,6 +10,7 @@ import BlogContext from '@/context/BlogContext'
 import { BlogProps } from '@/@types'
 import Link from 'next/link'
 import { DashboardBlogSkeleton } from '@/components/skeleton-loaders/DashboardBlogSkeleton'
+import withAuth from '../helpers/withAuth'
 
 const Blogs = () => {
 
@@ -21,7 +22,6 @@ const Blogs = () => {
     //get bookmarks
 
     return (
-        <MainLayout topBarIcon='blog' topBarText='Blogs' fixedTopbar={true} className=' '>
             <div className='  gap-5 mb-6 font-satoshi'>
                 <BlogHead />
                 <div className='flex flex-col'>
@@ -79,8 +79,7 @@ const Blogs = () => {
                 }
 
             </div>
-        </MainLayout>
     )
 }
 
-export default (Blogs);
+export default withAuth(Blogs);

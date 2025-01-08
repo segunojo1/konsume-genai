@@ -55,7 +55,7 @@ try {
   }
   checkUser();
 } catch (error: any) {
-  toast.update(id, { render: `${error?.response?.data}😞`, type: "error", isLoading: false, autoClose: 2000 });
+  toast.update(id, { render: `Error logging you in😞`, type: "error", isLoading: false, autoClose: 2000 });
 }
   };
 
