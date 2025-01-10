@@ -50,9 +50,7 @@ try {
   // Set user-specific cookies after successful login
   Cookies.set('ktn', data.token);
   Cookies.set('userid', data.value.id);
-  if(typeof window !== 'undefined'){
-    localStorage.setItem('konsumeUsername', data.value.fullName);
-  }
+  localStorage.setItem('konsumeUsername', data.value.fullName);
   checkUser();
 } catch (error: any) {
   toast.update(id, { render: `Error logging you in😞`, type: "error", isLoading: false, autoClose: 2000 });
