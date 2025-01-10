@@ -14,6 +14,7 @@ import { A11y, Pagination, Scrollbar } from "swiper/modules";
 import CreateProfileLoader from "@/components/animated-visual-cues/CreateProfileLoader";
 import Markdown from "react-markdown";
 import { toast } from "sonner";
+import withAuth from "../helpers/withAuth";
 
 const Meal = () => {
   const router = useRouter();
@@ -297,4 +298,4 @@ const fatIntakeRange = `What is the range of percent of fats contained in the me
   );
 };
 
-export default (Meal);
+export default withAuth(Meal);

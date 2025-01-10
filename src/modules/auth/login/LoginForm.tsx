@@ -3,7 +3,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button'
 import { LoginFormProps } from '@/@types';
 
-const LoginForm: React.FC<LoginFormProps> = ({ form, onSubmit }) => (
+const LoginForm = ({ form, onSubmit }: LoginFormProps) => (
     <div className='max-w-[807px] md:mx-auto'>
         <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col items-center">

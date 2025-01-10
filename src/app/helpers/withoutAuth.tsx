@@ -1,30 +1,26 @@
-"use client"
+"use client";
 
 import React, { useEffect } from "react";
-import { useRouter } from 'next/navigation'
+import { useRouter } from "next/navigation";
 import isAuthenticated from "./isAuthenticated";
 import Cookies from "js-cookie";
 
-// this would change later on once backend has the authentication
-// working.
-
-const withoutAuth = <P extends { children: React.ReactNode }>(
-  WrappedComponent: React.ComponentType<P>,
+const withoutAuth = <P extends object>(
+  WrappedComponent: React.ComponentType<P>
 ) => {
   const Wrapper: React.FC<P> = (props) => {
     const router = useRouter();
 
     useEffect(() => {
       const token = Cookies.get("ktn");
-      const isLoggedIn = isAuthenticated(token as string);
+      const isLoggedIn = isAuthenticated(token || "");
       if (isLoggedIn) {
         router.push("/dashboard");
       }
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [router]);
 
-    const wrappedComponent = React.createElement(WrappedComponent, props);
-    return wrappedComponent;
+    // Pass all props to the wrapped component
+    return <WrappedComponent {...props} />;
   };
 
   return Wrapper;

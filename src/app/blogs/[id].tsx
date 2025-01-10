@@ -1,4 +1,4 @@
-// pages/blog/[id].tsx
+"use client"
 
 import { BlogProps } from "@/@types";
 import MainLayout from "@/components/Layout/MainLayout";
@@ -11,6 +11,7 @@ import Cookies from "js-cookie";
 import { useUserContext } from "@/context/UserContext";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import withAuth from "../helpers/withAuth";
 
 type blogType = {
   $id: string;
@@ -98,19 +99,14 @@ const BlogDetail = () => {
   }
 
   return (
-    <MainLayout
-      topBarIcon="blog"
-      topBarText="Blogs"
-      fixedTopbar={true}
-      className="relative"
-    >
-      <div className="shadow-inner absolute cursor-pointer rounded-full hover:shadow-md">
+    <div>
+      <div onClick={() => router.back()} className="shadow-inner absolute cursor-pointer rounded-full hover:shadow-md">
         <Image
           alt="logo"
           width={31}
           height={31}
           src="/backbtn.png"
-          onClick={() => router.back()}
+          
         />
       </div>
       <div className="font-satoshi mt-7 gap-8 flex items-center flex-col">
@@ -182,8 +178,8 @@ const BlogDetail = () => {
         </div>
         )}
       </div>
-    </MainLayout>
+    </div>
   );
 };
 
-export default BlogDetail;
+export default withAuth(BlogDetail);

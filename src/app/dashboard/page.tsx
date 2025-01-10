@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import DashboardBody from '@/modules/dashboard/DashboardBody';
 import DashboardHead from '@/modules/dashboard/DashboardHead';
 import { Steps } from 'intro.js-react';
+import withAuth from '../helpers/withAuth';
 
 const Dashboard = () => {
   // const { 
@@ -134,4 +135,4 @@ const Dashboard = () => {
   );
 };
 
-export default (Dashboard);
+export default withAuth(Dashboard);
