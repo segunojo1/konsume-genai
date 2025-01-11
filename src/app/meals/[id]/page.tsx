@@ -6,7 +6,7 @@ import SearchBar from "@/components/ui/SearchBar";
 import gemini from "@/http/gemini";
 import MealInfo from "@/modules/meals/MealInfo";
 import Image from "next/image";
-import { usePathname, useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import React, { useContext, useEffect, useRef, useState } from "react";
 import Cookies from "js-cookie";
 import MealsContext from "@/context/MealsContext";
@@ -20,7 +20,7 @@ import withAuth from "@/app/helpers/withAuth";
 
 const Meal = () => {
   const router = useRouter();
-  let { id } = usePathname();
+  const { id } = useParams();
   const { generatingMeal, setGeneratingMeal } = useContext(MealsContext);
 
   const mealPrompt = `Generate a very short description of the meal ${id}. Strictly not more than 20 words`;
