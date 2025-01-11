@@ -48,7 +48,7 @@ const HealthCheckboxes: React.FC<HealthProps> = ({ label, specify }) => {
   };
 
   useEffect(() => {
-    console.log(possibleDiseases);
+    if (process.env.NODE_ENV !== 'production') console.log(possibleDiseases);
   }, [possibleDiseases]);
 
   return (

@@ -5,13 +5,13 @@ import MainLayout from "@/components/Layout/MainLayout";
 import { axiosKonsumeInstance } from "@/http/konsume";
 import MainBlogText from "@/modules/blog/MainBlogText";
 import Image from "next/image";
-import { useRouter } from "next/router";
+import { useParams, useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import { useUserContext } from "@/context/UserContext";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import withAuth from "../helpers/withAuth";
+import withAuth from "@/app/helpers/withAuth";
 
 type blogType = {
   $id: string;
@@ -22,7 +22,7 @@ type blogType = {
 }
 const BlogDetail = () => {
   const router = useRouter();
-  const { id } = router.query; // Dynamic route ID
+  const { id } = useParams();   
   const [blog, setBlog] = useState<BlogProps | null>(null); // Initialize as null
   const [loading, setLoading] = useState(true); // Track loading state
   const { profileID } = useUserContext();
@@ -43,12 +43,12 @@ const BlogDetail = () => {
         } else {
           // Blog not found, fetch from API
           const { data } = await axiosKonsumeInstance.get(
-            `/api/Blog/GetBlogByGuid/${id}`
+            `/api/Blog/${id}`
           );
 
           if (data) {
             setBlog(data);
-            console.log("blog fetchedd");
+            if (process.env.NODE_ENV !== 'production') console.log("blog fetchedd");
 
             // Save blog to localStorage
             const updatedBlogs = [...blogs, data];
@@ -75,9 +75,9 @@ const BlogDetail = () => {
             params: { profileId: profileID },
           }
         );
-        console.log(data);
+        if (process.env.NODE_ENV !== 'production') console.log(data);
       } catch (error) {
-        console.log(error);
+        if (process.env.NODE_ENV !== 'production') console.log(error);
       }
     };
 

@@ -7,17 +7,17 @@ const ChatQuestion = ({img, text}: any) => {
 
   useEffect(() => {
     if (userMessage) {
-      console.log('Updated userMessage:', userMessage); // This will log the updated state
+      if (process.env.NODE_ENV !== 'production') console.log('Updated userMessage:', userMessage); // This will log the updated state
     }
   }, [userMessage]); 
 
   const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
     setUserMessage(text); // Ensure that `text` is defined in your component
-    console.log();
+    if (process.env.NODE_ENV !== 'production') console.log();
     // setTimeout(() => {
-    //   console.log(userMessage);
+    //   if (process.env.NODE_ENV !== 'production') console.log(userMessage);
     //   sendMessage(e); // Passing the event to `sendMessage`
-    //   console.log(userMessage);
+    //   if (process.env.NODE_ENV !== 'production') console.log(userMessage);
       
     // }, 2000)
   };

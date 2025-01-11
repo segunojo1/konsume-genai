@@ -1,17 +1,22 @@
 'use client'
+import { checkUser } from '@/app/services/auth.services';
 import { Button } from '@/components/ui/button';
 import { axiosKonsumeInstance } from '@/http/konsume';
 import { signIn, useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useEffect } from 'react';
+import { toast } from 'react-toastify';
+import Cookies from 'js-cookie';
 
 export const SignupActions = () => {
   const { data: session } = useSession();
-  console.log(session);
+  if (process.env.NODE_ENV !== 'production') console.log(session);
+  const router = useRouter()
   
   // const sendHandler = async function () {
-  //   console.log("sent", session)
+  //   if (process.env.NODE_ENV !== 'production') console.log("sent", session)
   //   const result = await fetch(
   //     `${process.env.NEXT_PUBLIC_BASE_API_URL}auth/LoginWithGoogle`, // Make sure the URL has the correct endpoint
   //     {
@@ -53,15 +58,20 @@ export const SignupActions = () => {
               },
             });
   
-            console.log('Backend Response:', response.data);
-  
+            if (process.env.NODE_ENV !== 'production') console.log('Backend Response:', response.data);
+            toast.success(`Welcome back ${response.data.value.fullName}👨‍🍳!`);
+      // Set user-specific cookies after successful login
+      Cookies.set('ktn', response.data.token);
+      Cookies.set('userid', response.data.value.id);
+      localStorage.setItem('konsumeUsername', response.data.value.fullName);
+            await checkUser(router);
             // Redirect to the dashboard
             // router.push('/dashboard');
           } catch (error) {
             console.error('Error in backend call:', error);
           }
         }
-        console.log(session);
+        if (process.env.NODE_ENV !== 'production') console.log(session);
         
       };
   

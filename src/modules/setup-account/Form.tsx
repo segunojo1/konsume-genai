@@ -6,7 +6,7 @@ import DietType from './DietType';
 import { useSetupContext } from '../../context/SetupContext';
 
 const Form = () => {
-  const { currentPage, setCurrentPage } = useSetupContext();
+  const { currentPage } = useSetupContext();
   switch (currentPage) {
     case 1:
       return <BioData />;

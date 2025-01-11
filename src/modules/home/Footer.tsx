@@ -28,15 +28,15 @@ const Footer = () => {
         </ul>
       </div>
 
-      <div className="w-fit mx-auto cursor-pointer z-[9999] relative ">
-        <Link href="/auth/signup" className="cursor-pointer py-9 px-[100px] bg-[#9C8BF9] font-bold mx-auto text-[50px][46px] text-secondary-100 rounded-[100px]">Join Konsume</Link>
+      <div className="w-fit mx-auto cursor-pointer z-[9999] mt-9 relative ">
+        <Link href="/auth/signup" className="cursor-pointer md:py-9 py-[23px] md:px-[100px] px-[64px] bg-[#9C8BF9] font-bold mx-auto text-[50px][46px] text-secondary-100 rounded-[100px]">Join Konsume</Link>
       </div>
 
-      <div className="relative w-full h-[1000px] max-w-[1500px]">
+      <div className="relative w-full md:h-[1000px] h-[500px] max-w-[1500px]">
       <Image
         src={pan}
         alt="easier"
-        className="rotate-[60deg]"
+        className="md:rotate-[60deg] -rotate-[30deg] mt-24 md:mt-0"
         fill
         objectFit="contain"
       />

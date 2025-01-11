@@ -42,7 +42,7 @@ const TopBar = ({ setToggled, className, topBarText, topBarIcon }: any) => {
           </Link>
         </div>
       </div>
-        <Image src='/hamburger.svg' alt='' width={40} height={40} className='md:hidden block cursor-pointer' onClick={navClick} />
+        <Image src='/ham.png' alt='' width={40} height={40} className='md:hidden block cursor-pointer' onClick={navClick} />
     </div>
   )
 }

@@ -11,7 +11,7 @@ const BlogCard = ({title, category, showHeading, id }: BlogProps) => {
         return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
     };
     useEffect(() => {
-        console.log(id);
+        if (process.env.NODE_ENV !== 'production') console.log(id);
     }, [])
     
     

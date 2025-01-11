@@ -149,7 +149,7 @@ const fatIntakeRange = `What is the range of percent of fats contained in the me
     dataFetchedRef.current = true;
   };
 
-  console.log(id);
+  if (process.env.NODE_ENV !== 'production') console.log(id);
   return (
     <div>
       <MainLayout
@@ -212,8 +212,8 @@ const fatIntakeRange = `What is the range of percent of fats contained in the me
             spaceBetween={10}
             slidesPerView={1.5}
             pagination={{ clickable: true }}
-            onSwiper={(swiper) => console.log(swiper)}
-            onSlideChange={() => console.log("slide change")}
+            onSwiper={(swiper) => if (process.env.NODE_ENV !== 'production') console.log(swiper)}
+            onSlideChange={() => if (process.env.NODE_ENV !== 'production') console.log("slide change")}
             className="flex font-bold font-satoshi"
           >
             <SwiperSlide>

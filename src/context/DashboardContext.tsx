@@ -71,7 +71,7 @@ export function DashboardContextProvider({ children }: { children: React.ReactNo
       setNutritionTea(nutritiontea.data.candidates[0].content.parts[0].text)
 
 
-      console.log('nutrition fact fetched successfully:', nutritiontea.data.candidates[0].content.parts[0].text);
+      if (process.env.NODE_ENV !== 'production') console.log('nutrition fact fetched successfully:', nutritiontea.data.candidates[0].content.parts[0].text);
       if (typeof window !== 'undefined') {
         localStorage.setItem('breakfast', JSON.stringify(data.candidates[0].content.parts[0].text));
         localStorage.setItem('lunch', JSON.stringify(lun.data.candidates[0].content.parts[0].text));
@@ -148,13 +148,13 @@ export function DashboardContextProvider({ children }: { children: React.ReactNo
   //     setLunch(lun.data.candidates[0].content.parts[0].text);
   //     setDinner(din.data.candidates[0].content.parts[0].text);
   //     setLoading(false);
-  //     console.log(data);
-  //     console.log("meals recipe");
-  //     console.log(breakfast);
-  //     console.log(lunch);
-  //     console.log(dinner);
+  //     if (process.env.NODE_ENV !== 'production') console.log(data);
+  //     if (process.env.NODE_ENV !== 'production') console.log("meals recipe");
+  //     if (process.env.NODE_ENV !== 'production') console.log(breakfast);
+  //     if (process.env.NODE_ENV !== 'production') console.log(lunch);
+  //     if (process.env.NODE_ENV !== 'production') console.log(dinner);
   //   } catch (error) {
-  //     console.log(error);
+  //     if (process.env.NODE_ENV !== 'production') console.log(error);
 
   //   }
   // };

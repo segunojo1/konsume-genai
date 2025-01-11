@@ -61,5 +61,5 @@ export type AppDispatch = typeof store.dispatch;
 
 export const persistor = persistStore(store);
 // persistor.purge().then(() => {
-//   console.log('Persisted state has been purged.');
+//   if (process.env.NODE_ENV !== 'production') console.log('Persisted state has been purged.');
 //   });

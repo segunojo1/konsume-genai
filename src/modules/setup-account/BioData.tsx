@@ -56,7 +56,7 @@ const BioData = () => {
 
         // Sort countries alphabetically
         const sortedCountries = allCountries;
-        console.log(sortedCountries);
+        if (process.env.NODE_ENV !== 'production') console.log(sortedCountries);
         
         setCountries(sortedCountries);
       } catch (error) {
@@ -80,7 +80,7 @@ const BioData = () => {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
-    console.log(values);
+    if (process.env.NODE_ENV !== 'production') console.log(values);
     setAge(values.age);
     setWeight(values.weight);
     setNationality(values.nationality);
@@ -91,7 +91,7 @@ const BioData = () => {
     // sessionStorage.setItem("gender", values.gender);
 
     nextPage();
-    console.log(age);
+    if (process.env.NODE_ENV !== 'production') console.log(age);
   }
   return (
     <div className="mt-16 bg-[transparent] z-60 mx-auto max-w-[391px]">
@@ -154,12 +154,12 @@ const BioData = () => {
                       onValueChange={field.onChange}
                       defaultValue={field.value}
                     >
-                      <FormControl className="h-[48px] pt-[11px] pb-[14px] px-[14px] md:p-6 bg-primary-bg">
+                      <FormControl className="h-[48px] pt-[11px] pb-[14px] px-[14px] md:p-6 bg-white">
                         <SelectTrigger className=" ">
                           <SelectValue placeholder="Select your gender" />
                         </SelectTrigger>
                       </FormControl>
-                      <SelectContent ref={field.ref} className=" ">
+                      <SelectContent ref={field.ref} className=" bg-white">
                         <SelectItem value="Male" className="">
                           Male
                         </SelectItem>
@@ -181,13 +181,13 @@ const BioData = () => {
                       onValueChange={field.onChange}
                       defaultValue={field.value}
                     >
-                      <FormControl className="h-[37px] pt-[5px] pb-[9px] px-[9px] md:p-3 bg-primary-bg">
+                      <FormControl className="h-[37px] pt-[5px] pb-[9px] px-[9px] md:p-3 bg-white">
                         <SelectTrigger className="h-[48px] pt-[11px] pb-[14px] px-[14px] md:p-6 bg-primary-bg">
                           <SelectValue placeholder="Select your country" />
                         </SelectTrigger>
                       </FormControl>
 
-                      <SelectContent ref={field.ref} className=" ">
+                      <SelectContent ref={field.ref} className="bg-white">
                         {countries.map((country) => (
                           <SelectItem key={country} value={country}>
                             {country}

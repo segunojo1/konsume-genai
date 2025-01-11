@@ -21,7 +21,7 @@ const SocialLogin = () => {
   //     redirectTo: '/',
   //     onFinish: async () => {
   //       let userData = userSession.loadUserData();
-  //       console.log(userData);
+  //       if (process.env.NODE_ENV !== 'production') console.log(userData);
   //       // const {data} = await axiosKonsumeInstance.post('/api/auth/login', userData, {
   //       //   headers: { 'Content-Type': 'multipart/form-data' },
   //       // })
@@ -33,7 +33,7 @@ const SocialLogin = () => {
   const { data: session } = useSession();
   const userSession = useUserSession();
   const router = useRouter()
-
+  if (process.env.NODE_ENV !== 'production') console.log(session)
   const handleSignIn = async () => {
     try {
       await signIn("google");
@@ -44,38 +44,43 @@ const SocialLogin = () => {
   };
 
   // Handle the backend call once redirected back
-  useEffect(() => {
-    const sendIdTokenToBackend = async () => {
-      if (session?.idToken) {
-        try {
-          const response = await axiosKonsumeInstance.post('/api/auth/google-login', {
-            tokenId: session.idToken,
-          }, {
-            headers: {
-              'Content-Type': 'multipart/form-data',
-            },
-          });
-
-          console.log('Backend Response:', response.data);
-          toast.success(`Welcome back ${response.data.value.fullName}👨‍🍳!`);
-      // Set user-specific cookies after successful login
-      Cookies.set('ktn', response.data.token);
-      Cookies.set('userid', response.data.value.id);
-      localStorage.setItem('konsumeUsername', response.data.value.fullName);
-      
-      await checkUser(router);
-          // Redirect to the dashboard
-          // router.push('/dashboard');
-        } catch (error) {
-          console.error('Error in backend call:', error);
-        }
-      }
-      console.log(session);
-      
-    };
-
-    sendIdTokenToBackend();
-  }, [session]);
+  // useEffect(() => {
+  //   const sendIdTokenToBackend = async () => {
+  //     if (session && session.idToken) {
+  //       try {
+  //         const response = await axiosKonsumeInstance.post(
+  //           '/api/auth/google-login',
+  //           {
+  //             tokenId: session.idToken,
+  //           },
+  //           {
+  //             headers: {
+  //               'Content-Type': 'multipart/form-data',
+  //             },
+  //           }
+  //         );
+  
+  //         if (process.env.NODE_ENV !== 'production') console.log('Backend Response:', response.data);
+  //         toast.success(`Welcome back ${response.data.value.fullName}👨‍🍳!`);
+  
+  //         // Set user-specific cookies after successful login
+  //         Cookies.set('ktn', response.data.token);
+  //         Cookies.set('userid', response.data.value.id);
+  //         localStorage.setItem('konsumeUsername', response.data.value.fullName);
+  
+  //         await checkUser(router);
+  //       } catch (error) {
+  //         console.error('Error in backend call:', error);
+  //       }
+  //     }
+  //   };
+  
+  //   // Only trigger the function if a valid session exists
+  //   if (session && session.idToken) {
+  //     sendIdTokenToBackend();
+  //   }
+  // }, [session, router]);
+  
 
   return (
     <div className="flex flex-col justify-between gap-4 mt-4">

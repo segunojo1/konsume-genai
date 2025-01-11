@@ -6,8 +6,6 @@ import pan from "../../../public/pan.svg";
 import pann from "../../../public/pann.svg";
 import plate from "../../../public/konsumeplate.svg";
 import Hero from "./Hero";
-import SectionFour from "./SectionFour";
-import Link from "next/link";
 import FAQs from "./FAQs";
 import Footer from "./Footer";
 import SectionOne from "./SectionOne";
@@ -33,10 +31,21 @@ const HomeBody = () => {
           <motion.div className="absolute  right-0 -top-[55vh]" style={{opacity: useTransform(scrollYProgress, [0.5, 0.8], [1, 0]), top: useTransform(scrollYProgress, [0, 0.4], [-900, 60]), right: useTransform(scrollYProgress, [0.2, 0.7], [0, 400]), rotate: useTransform(scrollYProgress, [0.2, 0.7], [0, 60]) }}>
             <Image
               src={pan}
-              alt="easier"
+              alt="pan"
               className=""
               width={858}
               height={869}
+            />
+          </motion.div>
+        </motion.div>
+        <motion.div ref={panRef} className=" block -top-[40%] md:hidden  z-0" style={{ position: "sticky", top: 0 }}>
+          <motion.div className="absolute  right-0 top-[80vh]" style={{opacity: useTransform(scrollYProgress, [0.5, 0.8], [1, 0]), top: useTransform(scrollYProgress, [0, 0.4], [-900, 800]), right: useTransform(scrollYProgress, [0.2, 0.7], [0, 100]), rotate: useTransform(scrollYProgress, [0.2, 0.7], [0, 60]) }}>
+            <Image
+              src={pan}
+              alt="pan"
+              className=""
+              width={300}
+              height={300}
             />
           </motion.div>
         </motion.div>
@@ -45,13 +54,6 @@ const HomeBody = () => {
         <FAQs />
       </main>
         <Footer />
-      <Image
-        src={pann}
-        alt="easier"
-        className="absolute block my-auto top-0 bottom-0 md:hidden right-0 left-0 mx-auto z-0 "
-        width={237}
-        height={237}
-      />
     </div>
   );
 };

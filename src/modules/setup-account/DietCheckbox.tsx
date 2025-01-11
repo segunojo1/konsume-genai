@@ -29,7 +29,7 @@ const DietCheckbox: React.FC<GoalCheckboxProps> = ({ label, data }) => {
   };
 
   useEffect(() => {
-    console.log(diet);
+    if (process.env.NODE_ENV !== 'production') console.log(diet);
   }, [diet]);
 
   return (

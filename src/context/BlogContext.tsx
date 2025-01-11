@@ -25,23 +25,23 @@ export function BlogContextProvider({ children }: { children: React.ReactNode })
     const pathname = usePathname()
 
     useEffect(() => {
-        console.log('hi');
+        if (process.env.NODE_ENV !== 'production') console.log('hi');
 
         const fetchBlogs = async () => {
-            console.log('fetching blogs');
+            if (process.env.NODE_ENV !== 'production') console.log('fetching blogs');
             try {
                 setLoadingBlog(true);
                 const { data } = await axiosKonsumeInstance.get('/api/Blog/GenerateAllBlogs');
-                // console.log(data);
+                // if (process.env.NODE_ENV !== 'production') console.log(data);
 
                 setBlogs(data.content);
                 setTempBlogs(data.content)
 
                 if (data.content.length < 2) {
-                    console.log('Retrying due to insufficient blog data...');
+                    if (process.env.NODE_ENV !== 'production') console.log('Retrying due to insufficient blog data...');
                     await retry(fetchBlogs);
                 } else {
-                    console.log('Blogs fetched successfully:', data.content);
+                    if (process.env.NODE_ENV !== 'production') console.log('Blogs fetched successfully:', data.content);
                     if (typeof window !== 'undefined') {
                         localStorage.setItem('blogs', JSON.stringify(data.content));
                     }
@@ -88,9 +88,9 @@ export function BlogContextProvider({ children }: { children: React.ReactNode })
             try {
 
                 const { data } = await axiosKonsumeInstance.get(`/api/Bookmark/${await getProfileID()}`)
-                // console.log(data);
+                // if (process.env.NODE_ENV !== 'production') console.log(data);
                 if (data?.value?.$values) {
-                    console.log(data?.value?.$values);
+                    if (process.env.NODE_ENV !== 'production') console.log(data?.value?.$values);
                     // Store the array in localStorage
                     if (typeof window !== 'undefined') {
                         localStorage.setItem('bookmarks', JSON.stringify(data.value.$values));
@@ -102,7 +102,7 @@ export function BlogContextProvider({ children }: { children: React.ReactNode })
 
                 }
             } catch (error) {
-                // console.log(error);
+                // if (process.env.NODE_ENV !== 'production') console.log(error);
             } finally {
                 if (typeof window !== 'undefined') {
                     const cachedBlogs = JSON.parse(localStorage.getItem('bookmarks') || '[]');

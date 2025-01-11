@@ -62,13 +62,13 @@ const Login = () => {
 
   //   try {
   //     const profileCheck = await AuthServices.CheckUserService();
-  //   console.log(profileCheck);
+  //   if (process.env.NODE_ENV !== 'production') console.log(profileCheck);
   //   if (profileCheck?.value) {
   //     // Retrieve and save profile data if found
   //     const profileId = await AuthServices.getProfileID(); // Assuming this is defined elsewhere
   //     const profileData = await AuthServices.getProfileData(profileId);
 
-  //     console.log(profileData);
+  //     if (process.env.NODE_ENV !== 'production') console.log(profileData);
 
   //     Cookies.set("age", profileData?.value?.age);
   //     Cookies.set("gender", profileData?.value?.gender);

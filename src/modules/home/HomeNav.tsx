@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import kons from "../../../public/konsume_purple_logo.svg";
-import ham from "../../../public/assets/hamburger.png";
+import ham from "../../../public/ham.png";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -18,12 +18,12 @@ const HomeNav = () => {
 
   const route = useRouter();
   const navClick = () => {
-    console.log(toggled);
+    if (process.env.NODE_ENV !== 'production') console.log(toggled);
 
     setToggled((prev) => !prev);
   };
   const goRestaurant = () => {
-    console.log("restaurant");
+    if (process.env.NODE_ENV !== 'production') console.log("restaurant");
 
     route.push("/restaurant");
   };
@@ -60,7 +60,7 @@ const HomeNav = () => {
   // };
   return (
     <nav
-      className={`font-satoshi fixed w-full max-w-5xl mx-auto left-0 right-0 flex items-center justify-between mb-[232px] 2xl:px-[90px] md:px-[30px] px-[19px] z-[99999] transition-all duration-300 ${isScrolled ? "pt-[20px] " : "pt-[51px]"
+      className={`font-satoshi fixed w-full max-w-5xl mx-auto left-0 right-0 flex items-center justify-between mb-[232px] 2xl:px-[90px] md:px-[30px] px-[19px] z-[99999] transition-all duration-300 ${isScrolled ? "pt-[20px] " : "pt-[30px] md:pt-[51px]"
         }`}
     >
       <div className="flex items-center gap-[13px] mr-14">
@@ -71,34 +71,40 @@ const HomeNav = () => {
         className="absolute z-50"
       ></iframe> */}
       <div
-        className={`flex  items-center md:justify-between gap-6  w-fit h-full md:relative md:flex-row flex-col ${toggled ? "left-0" : "left-[-200px]"
-          } ${isScrolled ? "shadow-md" : ""} md:left-0 transition-all bottom-0 absolute  md:rounded-[42px] md:p-0 py-9 z-[99] md:bg-white bg-primarygtext`}
-      >
-        <ul className="flex items-center text-[16px]/[120%] font-normal gap-6 py-[15px] px-[25px] w-full md:flex-row md:text-base-black text-[white] flex-col h-1/3">
-          <li className="hover:animate-pulse  hover:border-2 border-[#8C77EC] border-dashed">
-            <a href="#magic">Magic</a>
-          </li>
-          <li className="hover:animate-pulse  hover:border-2 border-[#8C77EC] border-dashed">
-            <a href="#features">Features</a>
-          </li>
-          <li className="hover:animate-pulse  hover:border-2 border-[#8C77EC] border-dashed">
-            <a href="#magic">Coolness</a>
-          </li>
-          <li className="hover:animate-pulse  hover:border-2 border-[#8C77EC] border-dashed">
-            <a href="#faqs">FAQs</a>
-          </li>
-          <li className="hover:animate-pulse  hover:border-2 border-[#8C77EC] border-dashed">
-            <a href="#contact">Contact</a>
-          </li>
-        </ul>
-        <div className="flex flex-col items-center gap-[6px] md:hidden ">
-          <Link href="/auth/signup">
-            <button className="cursor-pointer text-[16px]/[120%] font-normal bg-[#9C8BF9] text-primary-bg w-[123px] py-[10px] rounded-[49px] md:m-0 mb-[30px] mt-16">
-              Join Us
-            </button>
-          </Link>
-        </div>
-      </div>
+  className={`flex items-center md:justify-between gap-6 md:w-full w-fit h-screen md:h-auto md:relative md:flex-row flex-col 
+    ${toggled ? "left-0" : "-left-[1000px]"} 
+    ${isScrolled ? "shadow-md" : ""} 
+    md:left-0 transition-all top-0 absolute md:rounded-[42px] md:p-0 py-9 z-[99] md:bg-white bg-primarygtext`}
+>
+  {/* Navigation Items */}
+  <ul className="flex items-center text-[16px]/[120%] font-normal gap-6 py-[15px] px-[25px] md:flex-row md:text-base-black text-white  flex-col md:h-auto">
+    <li className="hover:animate-pulse hover:border-2 border-[#8C77EC] border-dashed" onClick={navClick}>
+      <a href="#magic">Magic</a>
+    </li>
+    <li className="hover:animate-pulse hover:border-2 border-[#8C77EC] border-dashed" onClick={navClick}>
+      <a href="#features">Features</a>
+    </li>
+    <li className="hover:animate-pulse hover:border-2 border-[#8C77EC] border-dashed" onClick={navClick}>
+      <a href="#coolness">Coolness</a>
+    </li>
+    <li className="hover:animate-pulse hover:border-2 border-[#8C77EC] border-dashed" onClick={navClick}>
+      <a href="#faqs">FAQs</a>
+    </li>
+    <li className="hover:animate-pulse hover:border-2 border-[#8C77EC] border-dashed" onClick={navClick}>
+      <a href="#contact">Contact</a>
+    </li>
+  </ul>
+
+  {/* Call-to-Action Button */}
+  <div className="flex flex-col items-center gap-6 md:hidden mt-4">
+    <Link href="/auth/signup">
+      <button className="cursor-pointer text-[16px]/[120%] font-normal bg-[#9C8BF9] text-primary-bg w-[123px] py-[10px] rounded-[49px]">
+        Join Us
+      </button>
+    </Link>
+  </div>
+</div>
+
       <div className={`hidden md:flex items-center gap-[6px]`}>
         <div onMouseEnter={handleMouseEnter}>
           <Select value="Personal" onOpenChange={setOpen} open={open} onValueChange={goRestaurant} >

@@ -85,7 +85,7 @@ const Dashboard = () => {
   }, []);
 
   // const handleExit = () => {
-  //   console.log('Tour finished');
+  //   if (process.env.NODE_ENV !== 'production') console.log('Tour finished');
   //   // Cookies.set('visited', 'true');
   //   // setIsTourEnabled(false); // Disable the tour after it's done
   // };

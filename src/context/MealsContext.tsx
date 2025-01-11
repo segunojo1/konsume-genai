@@ -25,7 +25,7 @@ export function MealsContextProvider({
   const { getProfileID } = useUserContext();
 
   useEffect(() => {
-    console.log("hi");
+    if (process.env.NODE_ENV !== 'production') console.log("hi");
 
     const fetchMeals = async () => {
       try {
@@ -36,16 +36,16 @@ export function MealsContextProvider({
             params: { profileId: await getProfileID() },
           }
         );
-        console.log("fetching meals");
+        if (process.env.NODE_ENV !== 'production') console.log("fetching meals");
 
         setRecommendedMeals(data.$values);
         setTempMeals(data.$values);
         const today = new Date().toISOString().split("T")[0];
         if (data.$values.length < 2) {
-          console.log("Retrying due to insufficient meal data...");
+          if (process.env.NODE_ENV !== 'production') console.log("Retrying due to insufficient meal data...");
           await retry(fetchMeals, 3, 10000);
         } else {
-          console.log("Meals fetched successfully:", data.$values);
+          if (process.env.NODE_ENV !== 'production') console.log("Meals fetched successfully:", data.$values);
           if (typeof window !== "undefined") {
             localStorage.setItem(
               "recommendedMeals",
@@ -54,7 +54,7 @@ export function MealsContextProvider({
           }
         }
         setLoadingMeal(false);
-        console.log("fetched meals");
+        if (process.env.NODE_ENV !== 'production') console.log("fetched meals");
         localStorage.setItem("lastFetchDate", today);
       } catch (error) {
         console.error("Fetch Meals Error:", error);
@@ -63,7 +63,7 @@ export function MealsContextProvider({
     };
 
     const checkAndFetchMeals = async () => {
-      console.log("meal fetch text");
+      if (process.env.NODE_ENV !== 'production') console.log("meal fetch text");
 
       if (typeof window !== "undefined") {
         setLoadingMeal(true);
@@ -79,7 +79,7 @@ export function MealsContextProvider({
           setRecommendedMeals(cachedMeals);
           setTempMeals(cachedMeals);
           setLoadingMeal(false);
-          console.log(recommendedMeals);
+          if (process.env.NODE_ENV !== 'production') console.log(recommendedMeals);
         }
       }
 

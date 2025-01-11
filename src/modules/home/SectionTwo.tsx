@@ -74,15 +74,15 @@ const SectionTwo = () => {
   };
 
   return (
-    <div id="magic" className=" flex flex-col items-center z-[999] mt-[100px] relative">
+    <div id="magic" className="overflow-hidden flex flex-col items-center z-[999] mt-[100px] relative">
       <div className=" flex flex-col gap-[8px] items-center justify-center pt-[141px] mb-[56px]">
-        <h2 className="lg:text-[90px]/[100px] font-bold -tracking-[7px] servup text-[#0A1D4B]">Konsume For You!</h2>
+        <h2 className="lg:text-[90px]/[100px] text-[30px] font-bold lg:-tracking-[7px] -tracking-[4px] servup text-[#0A1D4B]">Konsume For You!</h2>
       </div>
       <Image src={vector5} alt="" className="absolute left-0 bottom-0  transition-all" />
       <Image src={vector6} alt="" className="absolute right-0 top-0 animate-pulse bottom-0 my-auto" />
       <Image src={scribble} alt="" className="absolute top-0 bottom-0 my-auto left-0" />
 
-      <div className="swiper-container space-y-9">
+      <div className="swiper-container space-y-9 ">
         <Swiper
           onSwiper={(swiper) => (swiperRef.current = swiper)}
           autoplay={{

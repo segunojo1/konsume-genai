@@ -64,13 +64,13 @@ export const UserProvider: React.FC<any> = ({ children }) => {
         setUsername(data.fullName);
         setEmail(data.email);
 
-        console.log(username);
+        if (process.env.NODE_ENV !== 'production') console.log(username);
       } else {
         setUsername("");
       }
-      console.log(data);
+      if (process.env.NODE_ENV !== 'production') console.log(data);
     } catch (error) {
-      console.log(error);
+      if (process.env.NODE_ENV !== 'production') console.log(error);
       setUsername("");
     }
   };
@@ -87,7 +87,7 @@ export const UserProvider: React.FC<any> = ({ children }) => {
           },
         }
       );
-      console.log(data);
+      if (process.env.NODE_ENV !== 'production') console.log(data);
       const formattedDate = formatDateToDDMMYY(data.value.dateOfBirth);
       setNationality(data.value.nationality);
       setWeight(data.value.weight);
@@ -100,10 +100,10 @@ export const UserProvider: React.FC<any> = ({ children }) => {
       setUserGoals(data.value.userGoals.$values);
       setAllergies(data.value.allergies.$values);
       setDOB(formattedDate);
-      console.log(userGoals);
+      if (process.env.NODE_ENV !== 'production') console.log(userGoals);
       
     } catch (error) {
-      console.log(error);
+      if (process.env.NODE_ENV !== 'production') console.log(error);
     }
   };
   const getStreakCount = async () => {
@@ -114,11 +114,11 @@ export const UserProvider: React.FC<any> = ({ children }) => {
          },
       });
       setStreakCount(data.streakCount)
-      // console.log(data);
-      // console.log(streakCount);
+      // if (process.env.NODE_ENV !== 'production') console.log(data);
+      // if (process.env.NODE_ENV !== 'production') console.log(streakCount);
       
     } catch (error) {
-      console.log(error);
+      if (process.env.NODE_ENV !== 'production') console.log(error);
       
     }
   }
@@ -134,10 +134,10 @@ export const UserProvider: React.FC<any> = ({ children }) => {
          },
       });
       setProfileID(data?.value);
-      // console.log(data?.value);
+      // if (process.env.NODE_ENV !== 'production') console.log(data?.value);
       return data?.value;
     } catch (error) {
-      // console.log(error);
+      // if (process.env.NODE_ENV !== 'production') console.log(error);
       
     }
   }

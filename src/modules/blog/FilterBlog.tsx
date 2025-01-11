@@ -12,11 +12,11 @@ const FilterBlog = ({ text, src, isActive, onChangeBlog, mainValue, setTempValue
     if (text === 'All') {
       filteredBlogs = mainValue;
     } else {
-      console.log(text);
+      if (process.env.NODE_ENV !== 'production') console.log(text);
       
       filteredBlogs = mainValue.filter((blog:BlogProps) => blog.category === text?.toLowerCase());
     }
-console.log(filteredBlogs);
+if (process.env.NODE_ENV !== 'production') console.log(filteredBlogs);
 
     // Update the recommended meals with the filtered list
     setTempValue(filteredBlogs);

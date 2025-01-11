@@ -2,7 +2,7 @@ import { axiosKonsumeInstance } from "@/http/konsume";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import { useRouter } from "next/router";
+import { usePathname, useRouter } from "next/navigation";
 import { useUserContext } from "@/context/UserContext";
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
@@ -17,7 +17,7 @@ interface Blog {
   id: number | undefined;
 }
 const MainBlogText = ({ id, text, category, titlee }: Blog) => {
-  const router = useRouter();
+  const router = usePathname();
   const [bookmarked, setBookmarked] = useState(false);
   const {getProfileID} = useUserContext();
   const [copied, setCopied] = useState(false);
@@ -68,7 +68,7 @@ const MainBlogText = ({ id, text, category, titlee }: Blog) => {
 
   useEffect(() => {
     const bookmarks = JSON.parse(localStorage.getItem("bookmarks") || "[]");
-    console.log(bookmarks);
+    if (process.env.NODE_ENV !== 'production') console.log(bookmarks);
 
     // Check if the text passed as a prop exists in the array
     const isBookmarked = bookmarks.some(
@@ -77,11 +77,11 @@ const MainBlogText = ({ id, text, category, titlee }: Blog) => {
     );
     if (isBookmarked) {
       setBookmarked(true);
-      console.log("in bookmarks");
+      if (process.env.NODE_ENV !== 'production') console.log("in bookmarks");
     } else {
-      console.log("not in bookmarks");
+      if (process.env.NODE_ENV !== 'production') console.log("not in bookmarks");
     }
-  }, [router.query, titlee]);
+  }, [router, titlee]);
 
   //add to bookmarks
   const bookMarkBlog = async () => {
@@ -104,10 +104,10 @@ const MainBlogText = ({ id, text, category, titlee }: Blog) => {
           }
         );
         setBookmarked(true);
-        console.log(data);
+        if (process.env.NODE_ENV !== 'production') console.log(data);
       }
     } catch (error) {
-      console.log(error);
+      if (process.env.NODE_ENV !== 'production') console.log(error);
     } finally {
     }
   };
