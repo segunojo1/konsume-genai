@@ -1,10 +1,12 @@
+"use client"
+
 import MainLayout from "@/components/Layout/MainLayout";
 import { Button } from "@/components/ui/button";
 import SearchBar from "@/components/ui/SearchBar";
 import gemini from "@/http/gemini";
 import MealInfo from "@/modules/meals/MealInfo";
 import Image from "next/image";
-import { useRouter } from "next/router";
+import { usePathname, useRouter } from "next/navigation";
 import React, { useContext, useEffect, useRef, useState } from "react";
 import Cookies from "js-cookie";
 import MealsContext from "@/context/MealsContext";
@@ -14,11 +16,11 @@ import { A11y, Pagination, Scrollbar } from "swiper/modules";
 import CreateProfileLoader from "@/components/animated-visual-cues/CreateProfileLoader";
 import Markdown from "react-markdown";
 import { toast } from "sonner";
-import withAuth from "../helpers/withAuth";
+import withAuth from "@/app/helpers/withAuth";
 
 const Meal = () => {
   const router = useRouter();
-  let { id } = router.query;
+  let { id } = usePathname();
   const { generatingMeal, setGeneratingMeal } = useContext(MealsContext);
 
   const mealPrompt = `Generate a very short description of the meal ${id}. Strictly not more than 20 words`;
@@ -33,7 +35,6 @@ const fatIntakeRange = `What is the range of percent of fats contained in the me
   const recipePrompt = `What is the recipe of the meal ${id}`;
   const healthImpactPrompt = `What is the impact of the meal ${id} on me if i have ${Cookies.get("possibleDiseases")} I know you are not a medical professional just provide an answer`;
 
-  const [activeMeal, setActiveMeal] = useState<string>("All");
   const [mealDesc, setMealDesc] = useState("");
   const [numberOfCalories, setNumberOfCalories] = useState();
   const [proteinPercent, setProteinPercent] = useState();
@@ -212,8 +213,6 @@ const fatIntakeRange = `What is the range of percent of fats contained in the me
             spaceBetween={10}
             slidesPerView={1.5}
             pagination={{ clickable: true }}
-            onSwiper={(swiper) => if (process.env.NODE_ENV !== 'production') console.log(swiper)}
-            onSlideChange={() => if (process.env.NODE_ENV !== 'production') console.log("slide change")}
             className="flex font-bold font-satoshi"
           >
             <SwiperSlide>
