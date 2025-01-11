@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Konsume - AI-Powered Nutrition Recommendations
 
-## Getting Started
+Welcome to the Konsume Github repository! Konsume is an AI-powered application designed to recommend meals based on users' health conditions and goals. This repository contains the source code, development history, and supporting materials for the Konsume platform.
 
-First, run the development server:
+## Structure
+This repository is structured as follows:
+`main branch`: contains frontend 
+`serverside branch`: contains backend
+- `backend/`: This directory contains the backend code of the Konsume platform, including the API endpoints, database models, and business logic implemented in C# using the ASP.NET framework.
+- `frontend/`: Here, you will find the frontend code for the Konsume platform, implemented using JavaScript, TypeScript, Next.js, and Tailwind CSS. This directory also includes the HTML, CSS, and JavaScript files for the user interface.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Purpose
+The purpose of Konsume is to provide personalized meal recommendations based on users' health conditions and dietary goals. The app aims to help users make healthier food choices by:
+- Offering custom meal plans tailored to individual health needs and goals.
+- Scanning food items to evaluate their healthiness for the user.
+- Providing a chatbot that understands user health data and gives real-time dietary advice.
+- Collaborating with restaurants to offer meal options aligned with users' health objectives, such as weight loss or specific dietary requirements.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## How AI Models Power Konsume
+Konsume leverages the integration of Gemini AI models to provide personalized nutrition advice and meal recommendations. Key features include:
+- Personalized meal recommendations based on user health data and goals.
+- A food scanner to evaluate the healthiness of foods.
+- A chatbot that understands user health data and provides real-time dietary advice.
+- A timetable feature that understands their health and what type of food they typically consume
+- Blogs feature that allows users read o cr=ertain topics
+- Collaboration with restaurants to offer meal options aligned with users' health goals.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+# Commit Standards
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Branches
 
-## Learn More
+- **dev** -> pr this branch for everything `frontend` or `backend` related
+- **main** -> **dont touch** this branch, this is what is running in production.
 
-To learn more about Next.js, take a look at the following resources:
+# Contributions
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Contribution Guidelines
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Clone the repo `git clone https://github.com/segunojo1/konsume-ai.git`.
+2. Open your terminal & set the origin branch: `git remote add origin https://github.com/segunojo1/konsume-ai.git`
+3. Pull origin `git pull origin dev`
+4. Create a new branch for the task you were assigned to, eg `TicketNumber/(Feat/Bug/Fix/Chore)/Ticket-title` : `git checkout -b ZA-001/Feat/Sign-Up-from`
+5. After making changes, do `git add .`
+6. Commit your changes with a descriptive commit message : `git commit -m "your commit message"`.
+7. To make sure there are no conflicts, run `git pull origin dev`.
+8. Push changes to your new branch, run `git push -u origin ZA-001/Feat/Sign-Up-from`.
+9. Create a pull request to the `dev` branch not `main`.
+10. Ensure to describe your pull request.
+11. > If you've added code that should be tested, add some test examples.
 
-## Deploy on Vercel
+# Merging
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Under any circumstances should you merge a pull requests on a specific branch to the `dev` or `main` branch
