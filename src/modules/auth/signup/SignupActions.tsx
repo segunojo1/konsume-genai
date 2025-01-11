@@ -1,7 +1,10 @@
+'use client'
 import { Button } from '@/components/ui/button';
+import { axiosKonsumeInstance } from '@/http/konsume';
 import { signIn, useSession } from 'next-auth/react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useEffect } from 'react';
 
 export const SignupActions = () => {
   const { data: session } = useSession();
@@ -28,6 +31,42 @@ export const SignupActions = () => {
     // useEffect(() => {
     //   sendHandler()
     // }, [])
+
+    const handleSignIn = async () => {
+      try {
+        await signIn("google");
+      } catch (error) {
+        console.error("Google Sign-In Error:", error);
+        alert("An error occurred during sign-in. Please try again.");
+      }
+    };
+
+    useEffect(() => {
+      const sendIdTokenToBackend = async () => {
+        if (session?.idToken) {
+          try {
+            const response = await axiosKonsumeInstance.post('/api/auth/google-login', {
+              tokenId: session.idToken,
+            }, {
+              headers: {
+                'Content-Type': 'multipart/form-data',
+              },
+            });
+  
+            console.log('Backend Response:', response.data);
+  
+            // Redirect to the dashboard
+            // router.push('/dashboard');
+          } catch (error) {
+            console.error('Error in backend call:', error);
+          }
+        }
+        console.log(session);
+        
+      };
+  
+      sendIdTokenToBackend();
+    }, [session]);
   return (
     <div className='mt-6'>
       <Button
@@ -39,8 +78,8 @@ export const SignupActions = () => {
       <div className="flex flex-col justify-between gap-8 mt-8">
         <p className='text-desktop-highlight font-bold mx-auto'>Or</p>
         <Button
-        onClick={() => signIn("google")}
-          className="mx-auto p-[10px] flex-[.7] border-2 max-w-[350px] w-full border-primary-bg-800 rounded-[30px] flex items-center gap-[10px] text-desktop-highlight font-bold"
+        onClick={handleSignIn}
+          className="mx-auto p-[10px] h-full flex-[.7] border-2 md:w-[350px] w-full hover:bg-primary-bg-800 hover:text-white border-primary-bg-800 text-primarygtext rounded-[30px] flex items-center gap-[10px] text-desktop-highlight font-bold"
           type="button"
         >
           <Image src="/assets/google.png" width={32} height={32} alt='google' />

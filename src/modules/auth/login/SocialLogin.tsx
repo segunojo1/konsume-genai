@@ -7,7 +7,9 @@ import { showConnect } from '@stacks/connect'
 import { useUserSession } from '@/hooks/useUserSession'
 import { useRouter } from 'next/navigation'
 import { axiosKonsumeInstance } from '@/http/konsume'
-import axios from 'axios'
+import Cookies from 'js-cookie';
+import { toast } from 'react-toastify'
+import { AuthServices, checkUser } from '@/app/services/auth.services'
 
 const SocialLogin = () => {
   // const loginWithStacks = () => {
@@ -30,14 +32,14 @@ const SocialLogin = () => {
   // }
   const { data: session } = useSession();
   const userSession = useUserSession();
-  const route = useRouter()
+  const router = useRouter()
 
   const handleSignIn = async () => {
     try {
-      // Trigger Google Sign-In and redirect back to this page
-      await signIn('google', { callbackUrl: '/auth/login' });
+      await signIn("google");
     } catch (error) {
-      console.error('Error during Google Sign-In:', error);
+      console.error("Google Sign-In Error:", error);
+      alert("An error occurred during sign-in. Please try again.");
     }
   };
 
@@ -55,7 +57,13 @@ const SocialLogin = () => {
           });
 
           console.log('Backend Response:', response.data);
-
+          toast.success(`Welcome back ${response.data.value.fullName}👨‍🍳!`);
+      // Set user-specific cookies after successful login
+      Cookies.set('ktn', response.data.token);
+      Cookies.set('userid', response.data.value.id);
+      localStorage.setItem('konsumeUsername', response.data.value.fullName);
+      
+      await checkUser(router);
           // Redirect to the dashboard
           // router.push('/dashboard');
         } catch (error) {

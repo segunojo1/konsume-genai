@@ -14,6 +14,7 @@ import { z } from 'zod';
 import { useUserContext } from '@/context/UserContext';
 import SignUpLink from '@/modules/auth/login/SignUpLink';
 import withoutAuth from '@/app/helpers/withoutAuth';
+import { AuthServices, checkUser } from '@/app/services/auth.services';
 
 
 // Schema for form validation using zod
@@ -24,7 +25,6 @@ const formSchema = z.object({
 
 const Login = () => {
   const router = useRouter();
-  const { profileID, getProfileID } = useUserContext();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -42,59 +42,49 @@ const Login = () => {
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     // Handle form submission and login
     const id = toast.loading("Processing...")
-try {
-  const {data} = await axiosKonsumeInstance.post('/api/auth/login', values, {
-    headers: { 'Content-Type': 'multipart/form-data' },
-  })
-  toast.update(id, { render: `Welcome back ${data.value.fullName}👨‍🍳!`, type: "success", isLoading: false, autoClose: 2000 });
-  // Set user-specific cookies after successful login
-  Cookies.set('ktn', data.token);
-  Cookies.set('userid', data.value.id);
-  localStorage.setItem('konsumeUsername', data.value.fullName);
-  checkUser();
-} catch (error: any) {
-  toast.update(id, { render: `Error logging you in😞`, type: "error", isLoading: false, autoClose: 2000 });
-}
+    try {
+      const { data } = await axiosKonsumeInstance.post('/api/auth/login', values, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+      })
+      toast.update(id, { render: `Welcome back ${data.value.fullName}👨‍🍳!`, type: "success", isLoading: false, autoClose: 2000 });
+      // Set user-specific cookies after successful login
+      Cookies.set('ktn', data.token);
+      Cookies.set('userid', data.value.id);
+      localStorage.setItem('konsumeUsername', data.value.fullName);
+      checkUser(router);
+    } catch (error: any) {
+      toast.update(id, { render: `Error logging you in😞`, type: "error", isLoading: false, autoClose: 2000 });
+    }
   };
 
-  const checkUser = async () => {
-    // Check if the user's profile is complete
-  
-     try {
-      const resp = await axiosKonsumeInstance.get('/api/profile/profileByUserId', {
-        headers: {
-          Authorization: `Bearer ${Cookies.get('ktn')}`,
-        },
-        params: {
-          Userid: Cookies.get('userid'),
-        },
-      });
-      console.log(resp);
-     if (resp.data.value) {
-  //save profile data when found
-  const profileId = await getProfileID()
-  const { data } = await axiosKonsumeInstance.get(`/api/profile/${profileId}`, {
-    headers: {
-      Authorization: `Bearer ${Cookies.get('ktn')}`,
-    },
-  });
-        console.log(data);
-        
-        Cookies.set('age', data?.value?.age);
-        Cookies.set('gender', data?.value?.gender);
-        Cookies.set('weight', data?.value?.weight);
-        Cookies.set('diet', data?.value?.dietType);
-        Cookies.set('possibleDiseases', data?.value?.allergies.$values);
-        Cookies.set('goal', data?.value?.userGoals.$values);
-        console.log(data);
-        router.push('/dashboard');
-      } else {
-        router.push('/setup-account');
-      }
-    } catch (error) {
-      console.error(error);
-    }
-}
+  // const checkUser = async () => {
+  //   // Check if the user's profile is complete
+
+  //   try {
+  //     const profileCheck = await AuthServices.CheckUserService();
+  //   console.log(profileCheck);
+  //   if (profileCheck?.value) {
+  //     // Retrieve and save profile data if found
+  //     const profileId = await AuthServices.getProfileID(); // Assuming this is defined elsewhere
+  //     const profileData = await AuthServices.getProfileData(profileId);
+
+  //     console.log(profileData);
+
+  //     Cookies.set("age", profileData?.value?.age);
+  //     Cookies.set("gender", profileData?.value?.gender);
+  //     Cookies.set("weight", profileData?.value?.weight);
+  //     Cookies.set("diet", profileData?.value?.dietType);
+  //     Cookies.set("possibleDiseases", profileData?.value?.allergies.$values);
+  //     Cookies.set("goal", profileData?.value?.userGoals.$values);
+
+  //     router.push("/dashboard");
+  //   } else {
+  //     router.push("/setup-account");
+  //   }
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // }
   return (
     <div className="font-satoshi flex flex-col gap-5 w-fit mx-auto pb-5 py-10 px-2 md:px-5">
       <Header />

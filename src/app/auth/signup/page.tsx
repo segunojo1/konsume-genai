@@ -58,7 +58,7 @@ const Signup = () => {
                   <ChooseAccount key={title} title={title} text={text} />
                 ))}
               </div>
-              <Link href="/auth/personal"  className="scroll-button overflow-hidden flex justify-end py-4 w-full rounded-[8px] border-2 border-primarygtext text-[#032902] text-desktop-highlight font-bold">
+              <Link href="/auth/personal"  className="scroll-button overflow-hidden flex justify-end py-4 w-full h-[2.9rem] rounded-[8px] border-2 border-primarygtext text-[#032902] text-desktop-highlight font-bold">
                
                   <span className="first-text"> Start Your Personalized Journey!</span>{' '}
                   <span className="second-text">Get Started</span>

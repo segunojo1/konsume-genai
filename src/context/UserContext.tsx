@@ -28,7 +28,7 @@ interface UserContextProps {
     streakCount: number;
     profileID: number | undefined;
     getProfileDetails: () => void;
-    getProfileID: () => void;
+    getProfileID: () => Promise<number | undefined>;
 }
 const UserContext = createContext<UserContextProps | undefined>(undefined);
 
@@ -122,7 +122,7 @@ export const UserProvider: React.FC<any> = ({ children }) => {
       
     }
   }
-  const getProfileID = async () => {
+  const getProfileID = async (): Promise<number | undefined> => {
     try {
       
       const { data } = await axiosKonsumeInstance.get(`/api/Profile/ProfileByIdUserId`, {
