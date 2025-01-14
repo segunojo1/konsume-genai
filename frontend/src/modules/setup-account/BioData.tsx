@@ -56,7 +56,7 @@ const BioData = () => {
 
         // Sort countries alphabetically
         const sortedCountries = allCountries;
-        if (process.env.NODE_ENV !== 'production') console.log(sortedCountries);
+        if (process.env.NEXT_PUBLIC_NODE_ENV !== 'production') console.log(sortedCountries);
         
         setCountries(sortedCountries);
       } catch (error) {
@@ -80,7 +80,7 @@ const BioData = () => {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     // Do something with the form values.
     // ✅ This will be type-safe and validated.
-    if (process.env.NODE_ENV !== 'production') console.log(values);
+    if (process.env.NEXT_PUBLIC_NODE_ENV !== 'production') console.log(values);
     setAge(values.age);
     setWeight(values.weight);
     setNationality(values.nationality);
@@ -91,7 +91,7 @@ const BioData = () => {
     // sessionStorage.setItem("gender", values.gender);
 
     nextPage();
-    if (process.env.NODE_ENV !== 'production') console.log(age);
+    if (process.env.NEXT_PUBLIC_NODE_ENV !== 'production') console.log(age);
   }
   return (
     <div className="mt-16 bg-[transparent] z-60 mx-auto max-w-[391px]">

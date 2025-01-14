@@ -88,7 +88,7 @@ const EditProfileModal = () => {
     userGoals: ["string"],
   };
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    if (process.env.NODE_ENV !== 'production') console.log(values);
+    if (process.env.NEXT_PUBLIC_NODE_ENV !== 'production') console.log(values);
     try {
       const { data } = await toast.promise(
         axiosKonsumeInstance.put(
@@ -116,7 +116,7 @@ const EditProfileModal = () => {
         }
       );
       setUpdating(!updating);
-      if (process.env.NODE_ENV !== 'production') console.log("Profile updated successfully:", data);
+      if (process.env.NEXT_PUBLIC_NODE_ENV !== 'production') console.log("Profile updated successfully:", data);
     } catch (error: any) {
       console.error(
         "Error updating profile:",

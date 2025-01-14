@@ -150,7 +150,7 @@ const fatIntakeRange = `What is the range of percent of fats contained in the me
     dataFetchedRef.current = true;
   };
 
-  if (process.env.NODE_ENV !== 'production') console.log(id);
+  if (process.env.NEXT_PUBLIC_NODE_ENV !== 'production') console.log(id);
   return (
     <div>
       <MainLayout

@@ -33,7 +33,7 @@ const withHigherAuth = <P extends {}>(
               id: Cookies.get('userid'),
             },
           });
-          if (process.env.NODE_ENV !== 'production') console.log(response);
+          if (process.env.NEXT_PUBLIC_NODE_ENV !== 'production') console.log(response);
           
           if (response.data?.value == true) {
             router.push('/dashboard');

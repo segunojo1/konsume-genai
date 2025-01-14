@@ -1,5 +1,5 @@
 'use client'
-import { checkUser } from '@/app/services/auth.services';
+import { checkUser } from '@/services/auth.services';
 import { Button } from '@/components/ui/button';
 import { axiosKonsumeInstance } from '@/http/konsume';
 import { signIn, useSession } from 'next-auth/react';
@@ -12,11 +12,11 @@ import Cookies from 'js-cookie';
 
 export const SignupActions = () => {
   const { data: session } = useSession();
-  if (process.env.NODE_ENV !== 'production') console.log(session);
+  if (process.env.NEXT_PUBLIC_NODE_ENV !== 'production') console.log(session);
   const router = useRouter()
   
   // const sendHandler = async function () {
-  //   if (process.env.NODE_ENV !== 'production') console.log("sent", session)
+  //   if (process.env.NEXT_PUBLIC_NODE_ENV !== 'production') console.log("sent", session)
   //   const result = await fetch(
   //     `${process.env.NEXT_PUBLIC_BASE_API_URL}auth/LoginWithGoogle`, // Make sure the URL has the correct endpoint
   //     {
@@ -58,7 +58,7 @@ export const SignupActions = () => {
               },
             });
   
-            if (process.env.NODE_ENV !== 'production') console.log('Backend Response:', response.data);
+            if (process.env.NEXT_PUBLIC_NODE_ENV !== 'production') console.log('Backend Response:', response.data);
             toast.success(`Welcome back ${response.data.value.fullName}👨‍🍳!`);
       // Set user-specific cookies after successful login
       Cookies.set('ktn', response.data.token);
@@ -71,7 +71,7 @@ export const SignupActions = () => {
             console.error('Error in backend call:', error);
           }
         }
-        if (process.env.NODE_ENV !== 'production') console.log(session);
+        if (process.env.NEXT_PUBLIC_NODE_ENV !== 'production') console.log(session);
         
       };
   

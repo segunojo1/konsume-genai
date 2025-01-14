@@ -68,7 +68,7 @@ const MainBlogText = ({ id, text, category, titlee }: Blog) => {
 
   useEffect(() => {
     const bookmarks = JSON.parse(localStorage.getItem("bookmarks") || "[]");
-    if (process.env.NODE_ENV !== 'production') console.log(bookmarks);
+    if (process.env.NEXT_PUBLIC_NODE_ENV !== 'production') console.log(bookmarks);
 
     // Check if the text passed as a prop exists in the array
     const isBookmarked = bookmarks.some(
@@ -77,9 +77,9 @@ const MainBlogText = ({ id, text, category, titlee }: Blog) => {
     );
     if (isBookmarked) {
       setBookmarked(true);
-      if (process.env.NODE_ENV !== 'production') console.log("in bookmarks");
+      if (process.env.NEXT_PUBLIC_NODE_ENV !== 'production') console.log("in bookmarks");
     } else {
-      if (process.env.NODE_ENV !== 'production') console.log("not in bookmarks");
+      if (process.env.NEXT_PUBLIC_NODE_ENV !== 'production') console.log("not in bookmarks");
     }
   }, [router, titlee]);
 
@@ -104,10 +104,10 @@ const MainBlogText = ({ id, text, category, titlee }: Blog) => {
           }
         );
         setBookmarked(true);
-        if (process.env.NODE_ENV !== 'production') console.log(data);
+        if (process.env.NEXT_PUBLIC_NODE_ENV !== 'production') console.log(data);
       }
     } catch (error) {
-      if (process.env.NODE_ENV !== 'production') console.log(error);
+      if (process.env.NEXT_PUBLIC_NODE_ENV !== 'production') console.log(error);
     } finally {
     }
   };

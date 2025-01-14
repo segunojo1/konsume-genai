@@ -18,12 +18,12 @@ const HomeNav = () => {
 
   const route = useRouter();
   const navClick = () => {
-    if (process.env.NODE_ENV !== 'production') console.log(toggled);
+    if (process.env.NEXT_PUBLIC_NODE_ENV !== 'production') console.log(toggled);
 
     setToggled((prev) => !prev);
   };
   const goRestaurant = () => {
-    if (process.env.NODE_ENV !== 'production') console.log("restaurant");
+    if (process.env.NEXT_PUBLIC_NODE_ENV !== 'production') console.log("restaurant");
 
     route.push("/restaurant");
   };

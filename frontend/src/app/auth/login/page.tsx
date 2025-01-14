@@ -14,7 +14,7 @@ import { z } from 'zod';
 import { useUserContext } from '@/context/UserContext';
 import SignUpLink from '@/modules/auth/login/SignUpLink';
 import withoutAuth from '@/app/helpers/withoutAuth';
-import { AuthServices, checkUser } from '@/app/services/auth.services';
+import { AuthServices, checkUser } from '@/services/auth.services';
 
 
 // Schema for form validation using zod
@@ -62,13 +62,13 @@ const Login = () => {
 
   //   try {
   //     const profileCheck = await AuthServices.CheckUserService();
-  //   if (process.env.NODE_ENV !== 'production') console.log(profileCheck);
+  //   if (process.env.NEXT_PUBLIC_NODE_ENV !== 'production') console.log(profileCheck);
   //   if (profileCheck?.value) {
   //     // Retrieve and save profile data if found
   //     const profileId = await AuthServices.getProfileID(); // Assuming this is defined elsewhere
   //     const profileData = await AuthServices.getProfileData(profileId);
 
-  //     if (process.env.NODE_ENV !== 'production') console.log(profileData);
+  //     if (process.env.NEXT_PUBLIC_NODE_ENV !== 'production') console.log(profileData);
 
   //     Cookies.set("age", profileData?.value?.age);
   //     Cookies.set("gender", profileData?.value?.gender);

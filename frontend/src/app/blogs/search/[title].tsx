@@ -45,7 +45,7 @@ const SearchedBlog = () => {
 
           if (data) {
             setBlog(data);
-            if (process.env.NODE_ENV !== 'production') console.log('blog fetchedd');
+            if (process.env.NEXT_PUBLIC_NODE_ENV !== 'production') console.log('blog fetchedd');
             
             // Save blog to localStorage
             const updatedBlogs = [...blogs, data];
@@ -69,9 +69,9 @@ const SearchedBlog = () => {
         const { data } = await axiosKonsumeInstance.get('/api/Streak/update-reading-streak', {
           params: { profileID: profileID },
         });
-        if (process.env.NODE_ENV !== 'production') console.log(data);
+        if (process.env.NEXT_PUBLIC_NODE_ENV !== 'production') console.log(data);
       } catch (error) {
-        if (process.env.NODE_ENV !== 'production') console.log(error);
+        if (process.env.NEXT_PUBLIC_NODE_ENV !== 'production') console.log(error);
       }
     };
 

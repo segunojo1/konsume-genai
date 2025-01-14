@@ -9,7 +9,7 @@ import { useRouter } from 'next/navigation'
 import { axiosKonsumeInstance } from '@/http/konsume'
 import Cookies from 'js-cookie';
 import { toast } from 'react-toastify'
-import { AuthServices, checkUser } from '@/app/services/auth.services'
+import { AuthServices, checkUser } from '@/services/auth.services'
 
 const SocialLogin = () => {
   // const loginWithStacks = () => {
@@ -21,7 +21,7 @@ const SocialLogin = () => {
   //     redirectTo: '/',
   //     onFinish: async () => {
   //       let userData = userSession.loadUserData();
-  //       if (process.env.NODE_ENV !== 'production') console.log(userData);
+  //       if (process.env.NEXT_PUBLIC_NODE_ENV !== 'production') console.log(userData);
   //       // const {data} = await axiosKonsumeInstance.post('/api/auth/login', userData, {
   //       //   headers: { 'Content-Type': 'multipart/form-data' },
   //       // })
@@ -33,7 +33,7 @@ const SocialLogin = () => {
   const { data: session } = useSession();
   const userSession = useUserSession();
   const router = useRouter()
-  if (process.env.NODE_ENV !== 'production') console.log(session)
+  if (process.env.NEXT_PUBLIC_NODE_ENV !== 'production') console.log(session)
   const handleSignIn = async () => {
     try {
       await signIn("google");
@@ -60,7 +60,7 @@ const SocialLogin = () => {
   //           }
   //         );
   
-  //         if (process.env.NODE_ENV !== 'production') console.log('Backend Response:', response.data);
+  //         if (process.env.NEXT_PUBLIC_NODE_ENV !== 'production') console.log('Backend Response:', response.data);
   //         toast.success(`Welcome back ${response.data.value.fullName}👨‍🍳!`);
   
   //         // Set user-specific cookies after successful login

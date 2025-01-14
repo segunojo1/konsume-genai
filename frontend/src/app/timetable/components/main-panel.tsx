@@ -73,12 +73,12 @@ function MainPanel({ date, open, setOpen }: Props) {
 
   const handleDayClick = (date: string) => {
     filterMealsByDay(dailyMeals, date); // Filter meals as usual
-    if (process.env.NODE_ENV !== 'production') console.log("date change");
+    if (process.env.NEXT_PUBLIC_NODE_ENV !== 'production') console.log("date change");
     setActiveDate(date); // Update the activeDate when a button is clicked
   };
   useEffect(() => {
     if (activeDate) {
-      if (process.env.NODE_ENV !== 'production') console.log("activeDate has changed:", activeDate);
+      if (process.env.NEXT_PUBLIC_NODE_ENV !== 'production') console.log("activeDate has changed:", activeDate);
       // Perform other actions if needed, based on the new activeDate value
     }
   }, [activeDate]); 
@@ -95,7 +95,7 @@ function MainPanel({ date, open, setOpen }: Props) {
     if (isLoading) {
       dispatch(setTimetableLoading(true));
     } else if (data?.value?.$values) {
-      if (process.env.NODE_ENV !== 'production') console.log(data.value.$values); // Debug: Check if data is fetched correctly
+      if (process.env.NEXT_PUBLIC_NODE_ENV !== 'production') console.log(data.value.$values); // Debug: Check if data is fetched correctly
       dispatch(setDailyMeals(data.value.$values));
     } else {
       console.error("Data is not in expected format:", data); // Debug error logging
@@ -111,7 +111,7 @@ function MainPanel({ date, open, setOpen }: Props) {
           <div className=" flex gap-[18px] w-full justify-between flex-wrap ">
           {days.map((day) => {
         const date = formatDateToDDMMYY(day);
-        if (process.env.NODE_ENV !== 'production') console.log(date);
+        if (process.env.NEXT_PUBLIC_NODE_ENV !== 'production') console.log(date);
         
         return (
           <Button
@@ -184,7 +184,7 @@ function MainPanel({ date, open, setOpen }: Props) {
                   return formattedAPIDate === formattedInputDate;
                 })?.meal.$values || [];
 
-              if (process.env.NODE_ENV !== 'production') console.log(date, "week", filteredMeals);
+              if (process.env.NEXT_PUBLIC_NODE_ENV !== 'production') console.log(date, "week", filteredMeals);
 
               return (
                 <div

@@ -28,11 +28,11 @@ const SharedBlog = () => {
         const { data } = await axiosKonsumeInstance.get(
           `/api/Blog/GetBlogById/${id}`
         );
-        if (process.env.NODE_ENV !== 'production') console.log(data);
+        if (process.env.NEXT_PUBLIC_NODE_ENV !== 'production') console.log(data);
         setBlog(data);
         setLoading(false); // Set loading to false when data is fetched
       } catch (error) {
-        if (process.env.NODE_ENV !== 'production') console.log(error);
+        if (process.env.NEXT_PUBLIC_NODE_ENV !== 'production') console.log(error);
         setLoading(false);
       }
     };
