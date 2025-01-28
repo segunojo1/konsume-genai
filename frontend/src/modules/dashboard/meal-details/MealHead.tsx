@@ -58,7 +58,7 @@ const MealHead = () => {
       if (process.env.NEXT_PUBLIC_NODE_ENV !== 'production') console.log("done");
       if (process.env.NEXT_PUBLIC_NODE_ENV !== 'production') console.log(query);
     } catch (error) {
-      console.error(error);
+      if (process.env.NEXT_PUBLIC_NODE_ENV !== 'production') console.error(error);
     }
   };
 

@@ -64,17 +64,17 @@ const HomeNav = () => {
         }`}
     >
       <div className="flex items-center gap-[13px] mr-14">
-        <Image src={kons} alt="logo" className=" z-[1] " />
+        <Image src={kons} alt="logo" className=" z-[1] " width={60} height={60}/>
       </div>
       {/* <iframe
         src="https://lottie.host/embed/0322d473-f9f4-4a72-b20b-042d823c5775/RfP87MEfHL.json"
         className="absolute z-50"
       ></iframe> */}
       <div
-  className={`flex items-center md:justify-between gap-6 md:w-full w-fit h-screen md:h-auto md:relative md:flex-row flex-col 
+  className={`flex items-center md:justify-between gap-6 md:w-fit w-fit h-screen md:h-auto md:relative md:flex-row flex-col 
     ${toggled ? "left-0" : "-left-[1000px]"} 
     ${isScrolled ? "shadow-md" : ""} 
-    md:left-0 transition-all top-0 absolute md:rounded-[42px] md:p-0 py-9 z-[99] md:bg-white bg-primarygtext`}
+    md:left-0 transition-all top-0 absolute md:rounded-[42px] md:p-0 py-9 px-4 z-[99] md:bg-white bg-primarygtext`}
 >
   {/* Navigation Items */}
   <ul className="flex items-center text-[16px]/[120%] font-normal gap-6 py-[15px] px-[25px] md:flex-row md:text-base-black text-white  flex-col md:h-auto">

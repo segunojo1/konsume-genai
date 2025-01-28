@@ -118,7 +118,7 @@ const EditProfileModal = () => {
       setUpdating(!updating);
       if (process.env.NEXT_PUBLIC_NODE_ENV !== 'production') console.log("Profile updated successfully:", data);
     } catch (error: any) {
-      console.error(
+      if (process.env.NEXT_PUBLIC_NODE_ENV !== 'production') console.error(
         "Error updating profile:",
         error.response ? error.response.data : error.message
       );

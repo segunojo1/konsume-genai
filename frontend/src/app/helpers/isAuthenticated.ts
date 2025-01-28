@@ -23,7 +23,7 @@ function isAuthenticated(token: string) {
 
     return true;
   } catch (error) {
-    console.error(`Error verifying jwt token: ${error}`);
+    if (process.env.NEXT_PUBLIC_NODE_ENV !== 'production') console.error(`Error verifying jwt token: ${error}`);
     clearCookie();
     return false;
   }

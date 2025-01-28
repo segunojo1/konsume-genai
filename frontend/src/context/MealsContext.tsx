@@ -57,7 +57,7 @@ export function MealsContextProvider({
         if (process.env.NEXT_PUBLIC_NODE_ENV !== 'production') console.log("fetched meals");
         localStorage.setItem("lastFetchDate", today);
       } catch (error) {
-        console.error("Fetch Meals Error:", error);
+        if (process.env.NEXT_PUBLIC_NODE_ENV !== 'production') console.error("Fetch Meals Error:", error);
         localStorage.removeItem("lastFetchDate");
       }
     };

@@ -52,7 +52,7 @@ export function BlogContextProvider({ children }: { children: React.ReactNode })
                     localStorage.removeItem('lastFetchBlogsDate');
                 }
                 toast.error('Error fetching blogs')
-                console.error('Fetch blog Error:', error);
+                if (process.env.NEXT_PUBLIC_NODE_ENV !== 'production') console.error('Fetch blog Error:', error);
             }
         };
 

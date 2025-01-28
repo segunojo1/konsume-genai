@@ -34,7 +34,7 @@ const MainBlogText = ({ id, text, category, titlee }: Blog) => {
         setCopied(false);
       }, 2000);
     }).catch((error) => {
-      console.error('Failed to copy text: ', error);
+      if (process.env.NEXT_PUBLIC_NODE_ENV !== 'production') console.error('Failed to copy text: ', error);
     });
   };
 

@@ -60,7 +60,7 @@ const BioData = () => {
         
         setCountries(sortedCountries);
       } catch (error) {
-        console.error('Error fetching countries:', error);
+        if (process.env.NEXT_PUBLIC_NODE_ENV !== 'production') console.error('Error fetching countries:', error);
       }
     };
 

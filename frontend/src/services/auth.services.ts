@@ -33,7 +33,7 @@ export class AuthServices {
           });
           return response.data;
         } catch (error) {
-          console.error(error);
+          if (process.env.NEXT_PUBLIC_NODE_ENV !== 'production') console.error(error);
           throw error;
         }
     }
@@ -81,6 +81,6 @@ export const checkUser = async (router: ReturnType<typeof useRouter>) => {
         router.push("/setup-account");
       }
     } catch (error) {
-      console.error("Error checking user:", error);
+      if (process.env.NEXT_PUBLIC_NODE_ENV !== 'production') console.error("Error checking user:", error);
     }
   };

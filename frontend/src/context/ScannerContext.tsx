@@ -85,7 +85,7 @@ export function ScannerContextProvider({ children }: { children: React.ReactNode
           const text = await response.text();
           setResult(text);
         } catch (error) {
-          console.error("Error fetching result:", error);
+          if (process.env.NEXT_PUBLIC_NODE_ENV !== 'production') console.error("Error fetching result:", error);
           setResult("");
         } finally {
           setLoading(prev => !prev);

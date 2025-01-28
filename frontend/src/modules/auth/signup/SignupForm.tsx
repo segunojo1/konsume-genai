@@ -66,7 +66,7 @@ export const SignupForm = () => {
     const errorMessage =
       error?.response?.data || "An unexpected error occurred";
     toast.error(errorMessage);
-    console.error(error);
+    if (process.env.NEXT_PUBLIC_NODE_ENV !== 'production') console.error(error);
   };
 
   return (

@@ -82,7 +82,7 @@ const Login = () => {
   //     router.push("/setup-account");
   //   }
   //   } catch (error) {
-  //     console.error(error);
+  //     if (process.env.NEXT_PUBLIC_NODE_ENV !== 'production') console.error(error);
   //   }
   // }
   return (

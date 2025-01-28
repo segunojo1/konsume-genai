@@ -98,7 +98,7 @@ function MainPanel({ date, open, setOpen }: Props) {
       if (process.env.NEXT_PUBLIC_NODE_ENV !== 'production') console.log(data.value.$values); // Debug: Check if data is fetched correctly
       dispatch(setDailyMeals(data.value.$values));
     } else {
-      console.error("Data is not in expected format:", data); // Debug error logging
+      if (process.env.NEXT_PUBLIC_NODE_ENV !== 'production') console.error("Data is not in expected format:", data); // Debug error logging
     }
   }, [data, dispatch, isLoading]);
 

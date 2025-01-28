@@ -44,7 +44,7 @@ const OtpModal = () => {
             // toast.success(resp.data.message);
             route.push('/auth/login');
           } catch (error: any) {
-            console.error(error);
+            if (process.env.NEXT_PUBLIC_NODE_ENV !== 'production') console.error(error);
             toast.error(error.response.data.title);
           }
     }

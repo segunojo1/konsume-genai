@@ -122,7 +122,7 @@ const fatIntakeRange = `What is the range of percent of fats contained in the me
           healthResponse.data.candidates[0].content.parts[0].text
         );
       } catch (error) {
-        console.error(error);
+        if (process.env.NEXT_PUBLIC_NODE_ENV !== 'production') console.error(error);
         router.back();
         toast("Please give the AI some seconds to buffer before checking details of another meal")
       } finally {

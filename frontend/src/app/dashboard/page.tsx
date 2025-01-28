@@ -35,7 +35,7 @@ const Dashboard = () => {
   //     setAge(data?.value?.age);
   //     setNationality(data?.value?.nationality);
   //   } catch (error) {
-  //     console.error(error);
+  //     if (process.env.NEXT_PUBLIC_NODE_ENV !== 'production') console.error(error);
   //   }
   // };
   const steps = [

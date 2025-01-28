@@ -80,7 +80,7 @@ export function DashboardContextProvider({ children }: { children: React.ReactNo
       }
 
     } catch (error) {
-      console.error('Fetch Meals Error:', error);
+      if (process.env.NEXT_PUBLIC_NODE_ENV !== 'production') console.error('Fetch Meals Error:', error);
     }
   };
   // Set a timer to fetch new data at the next 12:00 AM

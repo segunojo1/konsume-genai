@@ -41,7 +41,7 @@ export const SignupActions = () => {
       try {
         await signIn("google");
       } catch (error) {
-        console.error("Google Sign-In Error:", error);
+        if (process.env.NEXT_PUBLIC_NODE_ENV !== 'production') console.error("Google Sign-In Error:", error);
         alert("An error occurred during sign-in. Please try again.");
       }
     };
@@ -58,7 +58,7 @@ export const SignupActions = () => {
               },
             });
   
-            if (process.env.NEXT_PUBLIC_NODE_ENV !== 'production') console.log('Backend Response:', response.data);
+            console.log('Backend Response:', response.data);
             toast.success(`Welcome back ${response.data.value.fullName}👨‍🍳!`);
       // Set user-specific cookies after successful login
       Cookies.set('ktn', response.data.token);
@@ -68,7 +68,7 @@ export const SignupActions = () => {
             // Redirect to the dashboard
             // router.push('/dashboard');
           } catch (error) {
-            console.error('Error in backend call:', error);
+            if (process.env.NEXT_PUBLIC_NODE_ENV !== 'production') console.error('Error in backend call:', error);
           }
         }
         if (process.env.NEXT_PUBLIC_NODE_ENV !== 'production') console.log(session);

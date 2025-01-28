@@ -38,7 +38,7 @@ const SocialLogin = () => {
     try {
       await signIn("google");
     } catch (error) {
-      console.error("Google Sign-In Error:", error);
+      if (process.env.NEXT_PUBLIC_NODE_ENV !== 'production') console.error("Google Sign-In Error:", error);
       alert("An error occurred during sign-in. Please try again.");
     }
   };
@@ -70,7 +70,7 @@ const SocialLogin = () => {
   
   //         await checkUser(router);
   //       } catch (error) {
-  //         console.error('Error in backend call:', error);
+  //         if (process.env.NEXT_PUBLIC_NODE_ENV !== 'production') console.error('Error in backend call:', error);
   //       }
   //     }
   //   };

@@ -7,7 +7,7 @@ export const retry:any = async (fn: Function, retries = 6, delay = 3000) => {
       await new Promise((resolve) => setTimeout(resolve, delay)); // Wait for the specified delay
       return retry(fn, retries - 1, delay * 2); // Retry with increased delay
     } else {
-      console.error("Max retries reached:", error); // Max retries reached
+      if (process.env.NEXT_PUBLIC_NODE_ENV !== 'production') console.error("Max retries reached:", error); // Max retries reached
       throw error; // Throw the error if retries are exhausted
     }
   }

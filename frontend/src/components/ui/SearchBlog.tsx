@@ -48,7 +48,7 @@ const SearchBlog = () => {
               }
             router.push(`/blogs/search/${searchQuery.trim()}`);
         } catch (error) {
-            console.error('Error fetching blog:', error);
+            if (process.env.NEXT_PUBLIC_NODE_ENV !== 'production') console.error('Error fetching blog:', error);
             setGeneratingBlog(false)
         } finally {
             
