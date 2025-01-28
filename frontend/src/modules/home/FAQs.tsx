@@ -10,7 +10,7 @@ const FAQs = () => {
   return (
     <section  id="faqs" style={{ backgroundImage: "url('/faqsbg3.svg')" }} className="z-[999] relative md:bg-contain bg-cover bg-no-repeat mt-[200px] min-h-[1000px]">
       <div  id="faqs" className="  h-full z-[9999]  " >
-        <h2 className="lg:text-[90px]/[120px] text-[40px]/[130%] w-fit font-bold md:-tracking-[7px] servup text-[#ffffff] pt-[100px] md:pl-[130px] max-w-[300px] pl-[30px]">Frequently Asked Questions</h2>
+        <h2 className="lg:text-[90px]/[120px] text-[40px]/[130%] w-fit font-bold md:-tracking-[7px] servup text-[#ffffff] pt-[100px] md:pl-[130px] md:max-w-auto max-w-[300px] pl-[30px]">Frequently Asked Questions</h2>
         <div className="font-satoshi px-[30px] lg:py-8 py-4  lg:text-[24px]/[22px] font-medium text-secondary-1000 text-[18px]  w-full max-w-[718px] mx-auto">
           <Accordion
             type="single"
