@@ -4,7 +4,7 @@ import Image from "next/image";
 import React, { useRef } from "react";
 import pan from "../../../public/pan.svg";
 import pann from "../../../public/pann.svg";
-import plate from "../../../public/konsumeplate.svg";
+import frame from "../../../public/framee.png";
 import Hero from "./Hero";
 import FAQs from "./FAQs";
 import Footer from "./Footer";
@@ -49,7 +49,8 @@ const HomeBody = () => {
           </motion.div>
         </motion.div>
         {/* <SectionOne /> */}
-        <SectionTwo />
+        {/* <SectionTwo /> */}
+        <Image src={frame} alt="frame"/>
         <FAQs />
       </main>
         <Footer />
