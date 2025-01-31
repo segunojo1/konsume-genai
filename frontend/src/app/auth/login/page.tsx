@@ -14,7 +14,7 @@ import { z } from 'zod';
 import { useUserContext } from '@/context/UserContext';
 import SignUpLink from '@/modules/auth/login/SignUpLink';
 import withoutAuth from '@/app/helpers/withoutAuth';
-import { AuthServices, checkUser } from '@/services/auth.services';
+import { checkUser } from '@/services/auth.services';
 
 
 // Schema for form validation using zod
