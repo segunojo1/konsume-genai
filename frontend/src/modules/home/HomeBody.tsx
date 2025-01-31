@@ -8,7 +8,6 @@ import plate from "../../../public/konsumeplate.svg";
 import Hero from "./Hero";
 import FAQs from "./FAQs";
 import Footer from "./Footer";
-import SectionOne from "./SectionOne";
 import SectionTwo from "./SectionTwo";
 import { motion, useScroll, useTransform } from "framer-motion";
 import SectionThree from "./SectionThree";
@@ -49,7 +48,7 @@ const HomeBody = () => {
             />
           </motion.div>
         </motion.div>
-        <SectionOne />
+        {/* <SectionOne /> */}
         <SectionTwo />
         <FAQs />
       </main>

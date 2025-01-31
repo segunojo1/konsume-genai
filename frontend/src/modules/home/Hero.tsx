@@ -3,6 +3,9 @@
 import Link from "next/link";
 import { Scribble } from "./Scribble";
 import { useIsPageLoaded } from "@/hooks/useIsPageLoaded";
+import Image from "next/image";
+import plate from "../../../public/plate.svg"
+
 
 const Hero = () => {
   const  {isPageLoaded} = useIsPageLoaded()
@@ -15,8 +18,9 @@ const Hero = () => {
         </h1>
         <p className="md:text-[20px]/[27px] text-[18px]/[27px] text-center text-white relative z-[50] max-w-[656px] font-normal mx-auto">Discover smarter meal planning with personalized recommendations, seamless restaurant options, and tools to make healthy living effortless.</p>
         <Link href="/auth/signup" className="cursor-pointer">
-            <button className="cursor-pointer text-[16px]/[120%] font-normal bg-[#9b8bf9a3] text-primary-bg w-[140px] py-[16px] px-[20px] rounded-[49px]">
-              Join Konsume
+        <button className="cursor-pointer text-[16px]/[120%] flex items-center gap-3 font-normal bg-[#9b8bf9a3] text-primary-bg w-[160px] py-[16px] px-[20px] rounded-[49px]">
+              Get a Plate
+              <Image src={plate} alt="plate" width={30} height={30}/>
             </button>
           </Link>
           {isPageLoaded ? (

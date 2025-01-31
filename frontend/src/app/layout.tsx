@@ -23,8 +23,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Konsume",
-  description: "KonsumeAI web app",
+  title: "Plate",
+  description: "PlateAI web app",
 };
 
 export default function RootLayout({

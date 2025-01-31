@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import kons from "../../../public/konsume_purple_logo.svg";
+import kons from "../../../public/plate.svg";
 import ham from "../../../public/ham.png";
 import Image from "next/image";
 import Link from "next/link";
